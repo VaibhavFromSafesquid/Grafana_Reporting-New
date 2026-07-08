@@ -10,10 +10,10 @@
         "url": "/d/hdfc-user-reports-v1/hdfc-amc-user-reports",
         "expires": "0001-01-01T00:00:00Z",
         "created": "2026-07-02T02:30:18-04:00",
-        "updated": "2026-07-02T07:51:55-04:00",
+        "updated": "2026-07-08T01:29:31-04:00",
         "updatedBy": "admin",
         "createdBy": "admin",
-        "version": 17,
+        "version": 18,
         "hasAcl": false,
         "isFolder": false,
         "apiVersion": "v0alpha1",
@@ -1562,7 +1562,7 @@
                                 "type": "count"
                             }
                         ],
-                        "query": "AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "query": "hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
                         "refId": "A",
                         "target": "",
                         "timeField": "@timestamp"
@@ -2538,7 +2538,7 @@
                                 "type": "count"
                             }
                         ],
-                        "query": "AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "query": "hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
                         "refId": "A",
                         "target": "",
                         "timeField": "@timestamp"
@@ -2680,7 +2680,7 @@
                                 "type": "count"
                             }
                         ],
-                        "query": "AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "query": "hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
                         "refId": "A",
                         "target": "",
                         "timeField": "@timestamp"
@@ -4006,7 +4006,7 @@
         "timezone": "",
         "title": "HDFC AMC - User Reports",
         "uid": "hdfc-user-reports-v1",
-        "version": 17,
+        "version": 18,
         "weekStart": ""
     }
 }

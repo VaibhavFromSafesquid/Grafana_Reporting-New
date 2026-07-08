@@ -1,0 +1,441 @@
+{
+    "perf-numeric-convert": {
+        "description": "Convert perf string fields to numeric types",
+        "processors": [
+            {
+                "convert": {
+                    "field": "elapsed_time",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "client_connections_handled",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "client_connections_closed",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "client_transactions_handled",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "client_connections_in_pool",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "spare_client_threads",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "client_threads_in_use",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "client_threads_in_waiting",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "threads_starting_up",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "threads_reserved_for_prefetching",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "threading_errors",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "outbound_connections_created",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "outbound_connections_failed",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "outbound_connection_pool_reused",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "outbound_connections_in_pool",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "bytes_in_kb",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "bytes_out_kb",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "caching_objects_created_in_memory",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "caching_objects_removed_from_memory",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "dns_queries_reused",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "new_dns_queries",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "dns_query_failures",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "total_system_memory_kb",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "free_system_memory_kb",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "safesquid_virtual_memory_kb",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "safesquid_resident_memory_kb",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "safesquid_shared_memory_kb",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "safesquid_code_memory_kb",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "safesquid_data_memory_kb",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "safesquid_library_memory_kb",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "connections_handled_delta",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "connections_closed_delta",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "transactions_handled_delta",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "client_pool_delta",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "spare_threads_delta",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "active_threads_delta",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "threads_waiting_delta",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "threads_starting_up_delta",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "threads_prefetching_delta",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "threading_errors_delta",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "outbound_connections_created_delta",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "outbound_connections_failed_delta",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "outbound_connection_pool_reused_delta",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "outbound_connections_in_pool_delta",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "bytes_in_kb_delta",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "bytes_out_kb_delta",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "caching_objects_created_in_memory_delta",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "caching_objects_removed_from_memory_delta",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "dns_queries_reused_delta",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "new_dns_queries_delta",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "dns_query_failures_delta",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "load_avg_1min",
+                    "type": "float",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "load_avg_5min",
+                    "type": "float",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "load_avg_15min",
+                    "type": "float",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "running_processes",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "waiting_processes",
+                    "type": "integer",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "user_time",
+                    "type": "float",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "system_time",
+                    "type": "float",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "total_time",
+                    "type": "float",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "user_time_delta",
+                    "type": "float",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "system_time_delta",
+                    "type": "float",
+                    "ignore_missing": true
+                }
+            },
+            {
+                "convert": {
+                    "field": "total_time_delta",
+                    "type": "float",
+                    "ignore_missing": true
+                }
+            }
+        ]
+    }
+}

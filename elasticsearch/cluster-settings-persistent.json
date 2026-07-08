@@ -1,0 +1,8 @@
+{
+  "persistent" : {
+    "search" : {
+      "max_buckets" : "100000"
+    }
+  },
+  "transient" : { }
+}

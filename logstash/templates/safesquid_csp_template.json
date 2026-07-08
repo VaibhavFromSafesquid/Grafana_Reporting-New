@@ -1,0 +1,41 @@
+{
+  "index_patterns": ["safesquid-csp_*"],
+  "template": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 1
+    },
+    "mappings": {
+      "dynamic_templates": [
+        {
+          "default_as_keyword": {
+            "match_mapping_type": "string",
+            "mapping": { "type": "keyword" }
+          }
+        }
+      ],
+      "properties": {
+        "@timestamp": { "type": "date" },
+        "type": { "type": "keyword" },
+        "server_ip": { "type": "ip" },
+        "blocked_uri": { "type": "keyword" },
+        "column_number": { "type": "integer" },
+        "disposition": { "type": "keyword" },
+        "source-file": { "type": "keyword" },
+        "document_uri": { "type": "keyword" },
+        "effective_directive": { "type": "keyword" },
+        "original_policy": { "type": "keyword" },
+        "referrer": { "type": "keyword" },
+        "status_code": { "type": "integer" },
+        "line-number": { "type": "integer" },
+        "violated_directive": { "type": "keyword" },
+        "user": { "type": "keyword" },
+        "client_id": { "type": "integer" },
+        "username": { "type": "keyword" },
+        "handler": { "type": "keyword" },
+        "ip": { "type": "ip" },
+        "hostname": { "type": "keyword" }
+      }
+    }
+  }
+}

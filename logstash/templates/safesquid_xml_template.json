@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "index_patterns": ["safesquid-xml_*"],
+  "template": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 1
+    },
+    "mappings": {
+      "properties": {
+        "instance_id": { "type": "keyword" },
+        "customer_code": { "type": "keyword" },
+        "instance_name": { "type": "text" },
+        "remaining_quantity": { "type": "integer" },
+        "instance_status": { "type": "keyword" },
+        "instance_location": { "type": "text" },
+        "subscription_type": { "type": "keyword" },
+        "activation_key": { "type": "keyword" },
+        "key_status": { "type": "keyword" },
+        "subscription_start": { "type": "date", "format": "dd MMM yyyy" },
+        "creator_email": { "type": "keyword" },
+        "contact_email": { "type": "keyword" },
+        "days_to_expire": { "type": "integer" },
+        "last_update": { "type": "date", "format": "dd MMM yyyy HH:mm:ss" },
+        "fail_counts": { "type": "integer" },
+        "unreported": { "type": "integer" },
+        "process_id": { "type": "integer" },
+        "ca_value": { "type": "integer" },
+        "promo_link": { "type": "text" },
+        "promo_duration": { "type": "integer" },
+        "promo_start_time": { "type": "date", "format": "epoch_second" },
+        "promo_end_time": { "type": "date", "format": "epoch_second" },
+        "promo_interval": { "type": "integer" }
+      }
+    }
+  }
+}

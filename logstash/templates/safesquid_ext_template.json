@@ -1,0 +1,58 @@
+{
+  "index_patterns": ["safesquid-ext_*"],
+  "template": {
+    "mappings": {
+      "dynamic_templates": [
+        {
+          "default_as_keyword": {
+            "match_mapping_type": "string",
+            "mapping": { "type": "keyword" }
+          }
+        }
+      ],
+      "properties": {
+        "@timestamp": { "type": "date" },
+        "type": { "type": "keyword" },
+        "server_ip": { "type": "ip" },
+        "hostname": { "type": "keyword" },
+        "record_id": { "type": "keyword" },
+        "client_id": { "type": "integer" },
+        "request_id": { "type": "integer" },
+        "date_time": { "type": "date", "format": "dd/MMM/yyyy:HH:mm:ss||strict_date_optional_time" },
+        "elapsed_time": { "type": "integer" },
+        "status": { "type": "integer" },
+        "size": { "type": "integer" },
+        "upload": { "type": "integer" },
+        "download": { "type": "integer" },
+        "bypassed": { "type": "keyword" },
+        "client_ip": { "type": "ip" },
+        "username": { "type": "keyword" },
+        "method": { "type": "keyword" },
+        "url": { "type": "keyword" },
+        "http_referer": { "type": "keyword" },
+        "useragent": { "type": "keyword" },
+        "mime": { "type": "keyword" },
+        "filter_name": { "type": "keyword" },
+        "filtering_reason": { "type": "keyword" },
+        "interface": { "type": "keyword" },
+        "cachecode": { "type": "keyword" },
+        "peercode": { "type": "keyword" },
+        "peer": { "type": "keyword" },
+        "request_host": { "type": "keyword" },
+        "request_tld": { "type": "keyword" },
+        "referer_host": { "type": "keyword" },
+        "referer_tld": { "type": "keyword" },
+        "range": { "type": "keyword" },
+        "time_profiles": { "type": "keyword" },
+        "user_groups": { "type": "keyword" },
+        "request_profiles": { "type": "keyword" },
+        "application_signatures": { "type": "keyword" },
+        "categories": { "type": "keyword" },
+        "response_profiles": { "type": "keyword" },
+        "upload_content_types": { "type": "keyword" },
+        "download_content_types": { "type": "keyword" },
+        "profiles": { "type": "keyword" }
+      }
+    }
+  }
+}

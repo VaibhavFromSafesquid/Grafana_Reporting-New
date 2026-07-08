@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "uid": "ffl8ehy67bldsc",
+        "orgId": 1,
+        "name": "elasticsearch",
+        "type": "elasticsearch",
+        "typeName": "Elasticsearch",
+        "typeLogoUrl": "public/plugins/elasticsearch/img/elasticsearch.svg",
+        "access": "proxy",
+        "url": "https://localhost:9200",
+        "user": "",
+        "database": "",
+        "basicAuth": true,
+        "isDefault": false,
+        "jsonData": {
+            "esVersion": "8.0.0",
+            "index": "[safesquid-extended-]YYYY.MM.DD",
+            "interval": "Daily",
+            "maxConcurrentShardRequests": 5,
+            "timeField": "@timestamp",
+            "tlsSkipVerify": true
+        },
+        "readOnly": false
+    },
+    {
+        "id": 2,
+        "uid": "bfqw1msfgia68d",
+        "orgId": 1,
+        "name": "SafeSquid-Performance",
+        "type": "elasticsearch",
+        "typeName": "Elasticsearch",
+        "typeLogoUrl": "public/plugins/elasticsearch/img/elasticsearch.svg",
+        "access": "proxy",
+        "url": "https://localhost:9200",
+        "user": "",
+        "database": "",
+        "basicAuth": true,
+        "isDefault": false,
+        "jsonData": {
+            "esVersion": "8.0.0",
+            "index": "[safesquid-perf_]YYYY_MM",
+            "interval": "Monthly",
+            "maxConcurrentShardRequests": 5,
+            "timeField": "@timestamp",
+            "tlsSkipVerify": true
+        },
+        "readOnly": false
+    }
+]

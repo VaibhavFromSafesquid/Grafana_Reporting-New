@@ -1,0 +1,38 @@
+{
+  "index_patterns": ["safesquid-conf_*"],
+  "template": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 1
+    },
+    "mappings": {
+      "dynamic_templates": [
+        {
+          "default_as_keyword": {
+            "match_mapping_type": "string",
+            "mapping": { "type": "keyword" }
+          }
+        }
+      ],
+      "properties": {
+        "@timestamp": { "type": "date" },
+        "@version": { "type": "integer" },
+        "server_ip": { "type": "ip" },
+        "type": { "type": "keyword" },
+        "safesquid_interface": { "type": "keyword" },
+        "username": { "type": "keyword" },
+        "section": { "type": "keyword" },
+        "action": { "type": "keyword" },
+        "arguments": { "type": "keyword" },
+        "config_file": { "type": "keyword" },
+        "client_id": { "type": "integer" },
+        "page": { "type": "keyword" },
+        "http_method": { "type": "keyword" },
+        "url": { "type": "keyword", "fields": { "raw": { "type": "keyword" } } },
+        "referer": { "type": "keyword", "fields": { "raw": { "type": "keyword" } } },
+        "reason": { "type": "keyword" },
+        "hostname": { "type": "keyword" }
+      }
+    }
+  }
+}

@@ -1,0 +1,4012 @@
+{
+    "meta": {
+        "type": "db",
+        "canSave": true,
+        "canEdit": true,
+        "canAdmin": true,
+        "canStar": true,
+        "canDelete": true,
+        "slug": "hdfc-amc-user-reports",
+        "url": "/d/hdfc-user-reports-v1/hdfc-amc-user-reports",
+        "expires": "0001-01-01T00:00:00Z",
+        "created": "2026-07-02T02:30:18-04:00",
+        "updated": "2026-07-02T07:51:55-04:00",
+        "updatedBy": "admin",
+        "createdBy": "admin",
+        "version": 17,
+        "hasAcl": false,
+        "isFolder": false,
+        "apiVersion": "v0alpha1",
+        "folderId": 2834895301009408,
+        "folderUid": "bfl8jmgkih728a",
+        "folderTitle": "HDFC",
+        "folderUrl": "/dashboards/f/bfl8jmgkih728a/hdfc",
+        "provisioned": false,
+        "provisionedExternalId": "",
+        "annotationsPermissions": {
+            "dashboard": {
+                "canAdd": true,
+                "canEdit": true,
+                "canDelete": true
+            }
+        }
+    },
+    "dashboard": {
+        "__elements": {},
+        "__inputs": [
+            {
+                "description": "",
+                "label": "safesquid-extended",
+                "name": "DS_SAFESQUID-EXTENDED",
+                "pluginId": "elasticsearch",
+                "pluginName": "Elasticsearch",
+                "type": "datasource"
+            }
+        ],
+        "__requires": [
+            {
+                "id": "elasticsearch",
+                "name": "Elasticsearch",
+                "type": "datasource",
+                "version": "1.0.0"
+            },
+            {
+                "id": "geomap",
+                "name": "Geomap",
+                "type": "panel",
+                "version": ""
+            },
+            {
+                "id": "grafana",
+                "name": "Grafana",
+                "type": "grafana",
+                "version": "11.5.2"
+            },
+            {
+                "id": "piechart",
+                "name": "Pie chart",
+                "type": "panel",
+                "version": ""
+            },
+            {
+                "id": "table",
+                "name": "Table",
+                "type": "panel",
+                "version": ""
+            },
+            {
+                "id": "timeseries",
+                "name": "Time series",
+                "type": "panel",
+                "version": ""
+            }
+        ],
+        "description": "User Reports - Extended Log Analysis provides in-depth insights into user activity logs, helping track access patterns, anomalies, and system interactions. With detailed filtering and visualization, it enhances security monitoring, compliance auditing, and performance analysis. Ideal for administrators and security teams",
+        "editable": true,
+        "fiscalYearStartMonth": 0,
+        "graphTooltip": 0,
+        "id": 912697902718976,
+        "links": [],
+        "panels": [
+            {
+                "collapsed": false,
+                "gridPos": {
+                    "h": 1,
+                    "w": 24,
+                    "x": 0,
+                    "y": 0
+                },
+                "id": 26,
+                "panels": [],
+                "title": "General Usage Reports",
+                "type": "row"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "thresholds"
+                        },
+                        "custom": {
+                            "align": "auto",
+                            "cellOptions": {
+                                "type": "auto"
+                            },
+                            "filterable": true,
+                            "inspect": false
+                        },
+                        "mappings": [
+                            {
+                                "options": {
+                                    "match": "null",
+                                    "result": {
+                                        "text": "N/A"
+                                    }
+                                },
+                                "type": "special"
+                            }
+                        ],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "text",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "none"
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Count"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.width",
+                                    "value": 90
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "username.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "User"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 11,
+                    "w": 7,
+                    "x": 0,
+                    "y": 1
+                },
+                "id": 4,
+                "maxDataPoints": 100,
+                "options": {
+                    "cellHeight": "sm",
+                    "footer": {
+                        "countRows": false,
+                        "enablePagination": true,
+                        "fields": "",
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true,
+                    "sortBy": [
+                        {
+                            "desc": true,
+                            "displayName": "Count"
+                        }
+                    ]
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "bucketAggs": [
+                            {
+                                "field": "username.keyword",
+                                "id": "4",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "dsType": "elasticsearch",
+                        "metrics": [
+                            {
+                                "field": "select field",
+                                "id": "1",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "NOT cachecode: (\"TCP_DENIED\" OR \"TCP_SSL_HANDSHAKE\") AND NOT username.keyword: \"https\" AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "target": "",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Top User",
+                "transformations": [
+                    {
+                        "id": "merge",
+                        "options": {}
+                    }
+                ],
+                "type": "table"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "thresholds"
+                        },
+                        "custom": {
+                            "align": "auto",
+                            "cellOptions": {
+                                "type": "auto"
+                            },
+                            "filterable": true,
+                            "inspect": false
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Count"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.width",
+                                    "value": 90
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "user_groups.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "User Group"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 11,
+                    "w": 8,
+                    "x": 7,
+                    "y": 1
+                },
+                "id": 24,
+                "options": {
+                    "cellHeight": "sm",
+                    "footer": {
+                        "countRows": false,
+                        "enablePagination": true,
+                        "fields": "",
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true,
+                    "sortBy": [
+                        {
+                            "desc": true,
+                            "displayName": "Count"
+                        }
+                    ]
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "user_groups.keyword",
+                                "id": "2",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "metrics": [
+                            {
+                                "id": "1",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "NOT cachecode \"TCP_SSL_HANDSHAKE\" AND NOT username.keyword: \"https\" AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Top User Groups",
+                "transformations": [
+                    {
+                        "id": "merge",
+                        "options": {}
+                    }
+                ],
+                "type": "table"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "thresholds"
+                        },
+                        "custom": {
+                            "align": "auto",
+                            "cellOptions": {
+                                "type": "auto"
+                            },
+                            "filterable": true,
+                            "inspect": false
+                        },
+                        "mappings": [
+                            {
+                                "options": {
+                                    "match": "null",
+                                    "result": {
+                                        "text": "N/A"
+                                    }
+                                },
+                                "type": "special"
+                            }
+                        ],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "text",
+                                    "value": null
+                                }
+                            ]
+                        },
+                        "unit": "none"
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Count"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.width",
+                                    "value": 90
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "request_host.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Site"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 11,
+                    "w": 9,
+                    "x": 15,
+                    "y": 1
+                },
+                "id": 5,
+                "maxDataPoints": 100,
+                "options": {
+                    "cellHeight": "sm",
+                    "footer": {
+                        "countRows": false,
+                        "enablePagination": true,
+                        "fields": "",
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true,
+                    "sortBy": [
+                        {
+                            "desc": true,
+                            "displayName": "Count"
+                        }
+                    ]
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "bucketAggs": [
+                            {
+                                "fake": true,
+                                "field": "request_host.keyword",
+                                "id": "3",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_count",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "dsType": "elasticsearch",
+                        "metrics": [
+                            {
+                                "field": "select field",
+                                "id": "1",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "NOT cachecode: (\"TCP_DENIED\" OR \"TCP_SSL_HANDSHAKE\") AND NOT username.keyword: \"https\" AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "target": "",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Top Site",
+                "transformations": [
+                    {
+                        "id": "merge",
+                        "options": {}
+                    }
+                ],
+                "type": "table"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "thresholds"
+                        },
+                        "custom": {
+                            "align": "auto",
+                            "cellOptions": {
+                                "type": "auto"
+                            },
+                            "filterable": true,
+                            "inspect": false
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Count"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.width",
+                                    "value": 90
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "application_signatures.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Application"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 9,
+                    "w": 13,
+                    "x": 0,
+                    "y": 12
+                },
+                "id": 21,
+                "options": {
+                    "cellHeight": "sm",
+                    "footer": {
+                        "countRows": false,
+                        "enablePagination": true,
+                        "fields": "",
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true,
+                    "sortBy": [
+                        {
+                            "desc": true,
+                            "displayName": "Count"
+                        }
+                    ]
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "application_signatures.keyword",
+                                "id": "2",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "metrics": [
+                            {
+                                "id": "1",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "NOT cachecode \"TCP_SSL_HANDSHAKE\" AND NOT username.keyword: \"https\" AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Application List",
+                "transformations": [
+                    {
+                        "id": "merge",
+                        "options": {}
+                    }
+                ],
+                "type": "table"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "thresholds"
+                        },
+                        "custom": {
+                            "align": "auto",
+                            "cellOptions": {
+                                "type": "auto"
+                            },
+                            "filterable": true,
+                            "inspect": false
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Count"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.width",
+                                    "value": 90
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "useragent.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "User Agent"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 9,
+                    "w": 11,
+                    "x": 13,
+                    "y": 12
+                },
+                "id": 22,
+                "options": {
+                    "cellHeight": "sm",
+                    "footer": {
+                        "countRows": false,
+                        "enablePagination": true,
+                        "fields": "",
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true,
+                    "sortBy": [
+                        {
+                            "desc": true,
+                            "displayName": "Count"
+                        }
+                    ]
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "useragent.keyword",
+                                "id": "2",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "metrics": [
+                            {
+                                "id": "1",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "NOT cachecode \"TCP_SSL_HANDSHAKE\" AND NOT username.keyword: \"https\" AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Endpoint Applications",
+                "transformations": [
+                    {
+                        "id": "merge",
+                        "options": {}
+                    }
+                ],
+                "type": "table"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "thresholds"
+                        },
+                        "custom": {
+                            "align": "auto",
+                            "cellOptions": {
+                                "type": "auto"
+                            },
+                            "filterable": true,
+                            "inspect": false
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Client IP"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.width",
+                                    "value": 150
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Count"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.width",
+                                    "value": 90
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "username.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "User"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "request_host.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Site"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "client_ip"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Client IP"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "client_ip.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Client IP"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 10,
+                    "w": 12,
+                    "x": 0,
+                    "y": 21
+                },
+                "id": 18,
+                "options": {
+                    "cellHeight": "sm",
+                    "footer": {
+                        "countRows": false,
+                        "enablePagination": true,
+                        "fields": "",
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true,
+                    "sortBy": [
+                        {
+                            "desc": true,
+                            "displayName": "Count"
+                        }
+                    ]
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "bucketAggs": [
+                            {
+                                "fake": true,
+                                "field": "client_ip.keyword",
+                                "id": "14",
+                                "settings": {
+                                    "min_doc_count": 1,
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "10"
+                                },
+                                "type": "terms"
+                            },
+                            {
+                                "fake": true,
+                                "field": "username.keyword",
+                                "id": "15",
+                                "settings": {
+                                    "min_doc_count": 1,
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "10"
+                                },
+                                "type": "terms"
+                            },
+                            {
+                                "fake": true,
+                                "field": "request_host.keyword",
+                                "id": "16",
+                                "settings": {
+                                    "min_doc_count": 1,
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "10"
+                                },
+                                "type": "terms"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "dsType": "elasticsearch",
+                        "metrics": [
+                            {
+                                "field": "select field",
+                                "id": "1",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "method: ( \"CONNECT\" OR \"GET\" OR \"POST\" ) AND NOT cachecode: (\"TCP_DENIED\" OR \"TCP_SSL_HANDSHAKE\" ) AND NOT username.keyword: \"https\" AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "target": "",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "User Access",
+                "transformations": [
+                    {
+                        "id": "merge",
+                        "options": {}
+                    }
+                ],
+                "type": "table"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "thresholds"
+                        },
+                        "custom": {
+                            "align": "auto",
+                            "cellOptions": {
+                                "type": "auto"
+                            },
+                            "filterable": true,
+                            "inspect": false
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        },
+                        "unit": "ms"
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Usage TIme"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.width",
+                                    "value": 150
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "username.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "User"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "request_host.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Site"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Usage TIme"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 10,
+                    "w": 12,
+                    "x": 12,
+                    "y": 21
+                },
+                "id": 25,
+                "options": {
+                    "cellHeight": "sm",
+                    "footer": {
+                        "countRows": false,
+                        "enablePagination": true,
+                        "fields": "",
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true,
+                    "sortBy": [
+                        {
+                            "desc": true,
+                            "displayName": "Usage TIme"
+                        }
+                    ]
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "username.keyword",
+                                "id": "2",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            },
+                            {
+                                "field": "request_host.keyword",
+                                "id": "3",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "metrics": [
+                            {
+                                "id": "1",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "NOT cachecode: \"TCP_SSL_HANDSHAKE\" AND NOT username.keyword: \"https\" AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "User Total Usage Time ",
+                "transformations": [
+                    {
+                        "id": "merge",
+                        "options": {}
+                    }
+                ],
+                "type": "table"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "thresholds"
+                        },
+                        "custom": {
+                            "align": "auto",
+                            "cellOptions": {
+                                "type": "auto",
+                                "wrapText": false
+                            },
+                            "inspect": false
+                        },
+                        "fieldMinMax": false,
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        },
+                        "unit": "decbytes"
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.width",
+                                    "value": 150
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "request_host.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Site"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "download_content_types"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Downloaded Content"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "download_content_types.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Download Type"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 10,
+                    "w": 12,
+                    "x": 0,
+                    "y": 31
+                },
+                "id": 9,
+                "options": {
+                    "cellHeight": "sm",
+                    "footer": {
+                        "countRows": false,
+                        "enablePagination": true,
+                        "fields": "",
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true,
+                    "sortBy": [
+                        {
+                            "desc": true,
+                            "displayName": "Total Downloads"
+                        }
+                    ]
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "bucketAggs": [
+                            {
+                                "fake": true,
+                                "field": "request_host.keyword",
+                                "id": "12",
+                                "settings": {
+                                    "min_doc_count": 1,
+                                    "order": "desc",
+                                    "orderBy": "_count",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            },
+                            {
+                                "field": "download_content_types.keyword",
+                                "id": "14",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "10"
+                                },
+                                "type": "terms"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "dsType": "elasticsearch",
+                        "metrics": [
+                            {
+                                "id": "13",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "method: \"GET\" AND NOT cachecode: (\"TCP_DENIED\" OR  \"TCP_SSL_HANDSHAKE\" ) AND NOT download_content_types: \"-\" AND NOT username.keyword: \"https\" AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "target": "",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Total Downloads",
+                "transformations": [
+                    {
+                        "id": "merge",
+                        "options": {}
+                    }
+                ],
+                "type": "table"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "thresholds"
+                        },
+                        "custom": {
+                            "align": "auto",
+                            "cellOptions": {
+                                "type": "auto",
+                                "wrapText": false
+                            },
+                            "inspect": false
+                        },
+                        "fieldMinMax": false,
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        },
+                        "unit": "decbytes"
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.width",
+                                    "value": 130
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "request_host.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Site"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "upload_content_types"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Uploaded Content"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "upload_content_types.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Upload Type"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 10,
+                    "w": 12,
+                    "x": 12,
+                    "y": 31
+                },
+                "id": 39,
+                "options": {
+                    "cellHeight": "sm",
+                    "footer": {
+                        "countRows": false,
+                        "enablePagination": true,
+                        "fields": "",
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true,
+                    "sortBy": [
+                        {
+                            "desc": true,
+                            "displayName": "Total Uploads"
+                        }
+                    ]
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "bucketAggs": [
+                            {
+                                "field": "upload_content_types.keyword",
+                                "id": "14",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            },
+                            {
+                                "field": "request_host.keyword",
+                                "id": "15",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "10"
+                                },
+                                "type": "terms"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "dsType": "elasticsearch",
+                        "metrics": [
+                            {
+                                "id": "1",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "method: \"POST\" AND NOT cachecode: (\"TCP_DENIED\" OR  \"TCP_SSL_HANDSHAKE\" ) AND NOT upload_content_types: \"-\" AND NOT username.keyword: \"https\" AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "target": "",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Total Uploads",
+                "transformations": [
+                    {
+                        "id": "merge",
+                        "options": {}
+                    }
+                ],
+                "type": "table"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "axisBorderShow": false,
+                            "axisCenteredZero": false,
+                            "axisColorMode": "text",
+                            "axisLabel": "",
+                            "axisPlacement": "auto",
+                            "barAlignment": 0,
+                            "barWidthFactor": 0.6,
+                            "drawStyle": "line",
+                            "fillOpacity": 20,
+                            "gradientMode": "none",
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            },
+                            "insertNulls": false,
+                            "lineInterpolation": "smooth",
+                            "lineWidth": 1,
+                            "pointSize": 5,
+                            "scaleDistribution": {
+                                "type": "linear"
+                            },
+                            "showPoints": "never",
+                            "spanNulls": false,
+                            "stacking": {
+                                "group": "A",
+                                "mode": "none"
+                            },
+                            "thresholdsStyle": {
+                                "mode": "off"
+                            }
+                        },
+                        "decimals": 2,
+                        "mappings": [
+                            {
+                                "options": {
+                                    "match": "null",
+                                    "result": {
+                                        "text": "N/A"
+                                    }
+                                },
+                                "type": "special"
+                            }
+                        ],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        },
+                        "unit": "short"
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum download"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Download"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum upload"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Upload"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 10,
+                    "w": 13,
+                    "x": 0,
+                    "y": 41
+                },
+                "id": 3,
+                "maxDataPoints": 100,
+                "options": {
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "list",
+                        "placement": "bottom",
+                        "showLegend": true
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "bucketAggs": [
+                            {
+                                "field": "@timestamp",
+                                "id": "2",
+                                "settings": {
+                                    "interval": "1d",
+                                    "min_doc_count": 0,
+                                    "trimEdges": 0
+                                },
+                                "type": "date_histogram"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "dsType": "elasticsearch",
+                        "metrics": [
+                            {
+                                "hide": false,
+                                "id": "3",
+                                "type": "count"
+                            },
+                            {
+                                "id": "4",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "target": "",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Total Traffic",
+                "type": "timeseries"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            }
+                        },
+                        "decimals": 0,
+                        "mappings": [],
+                        "unit": "none"
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "categories.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Category"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 10,
+                    "w": 11,
+                    "x": 13,
+                    "y": 41
+                },
+                "id": 20,
+                "maxDataPoints": 3,
+                "options": {
+                    "displayLabels": [],
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "table",
+                        "placement": "right",
+                        "showLegend": true,
+                        "values": [
+                            "value"
+                        ]
+                    },
+                    "pieType": "donut",
+                    "reduceOptions": {
+                        "calcs": [
+                            "sum"
+                        ],
+                        "fields": "",
+                        "values": false
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "bucketAggs": [
+                            {
+                                "fake": true,
+                                "field": "categories.keyword",
+                                "id": "3",
+                                "settings": {
+                                    "min_doc_count": 1,
+                                    "order": "desc",
+                                    "orderBy": "_count",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "dsType": "elasticsearch",
+                        "metrics": [
+                            {
+                                "field": "select field",
+                                "id": "1",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "NOT cachecode \"TCP_SSL_HANDSHAKE\" AND NOT username.keyword: \"https\" AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "target": "",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Top Categories",
+                "transformations": [
+                    {
+                        "id": "rowsToFields",
+                        "options": {
+                            "mappings": [
+                                {
+                                    "fieldName": "categories",
+                                    "handlerKey": "field.name"
+                                },
+                                {
+                                    "fieldName": "Count",
+                                    "handlerKey": "field.value"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "type": "piechart"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "custom": {
+                            "align": "auto",
+                            "cellOptions": {
+                                "type": "auto"
+                            },
+                            "inspect": false
+                        },
+                        "decimals": 2,
+                        "displayName": "",
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        },
+                        "unit": "short"
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Count"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Count"
+                                },
+                                {
+                                    "id": "unit",
+                                    "value": "none"
+                                },
+                                {
+                                    "id": "custom.align"
+                                },
+                                {
+                                    "id": "custom.width",
+                                    "value": 90
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "username.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "User"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 11,
+                    "w": 6,
+                    "x": 0,
+                    "y": 51
+                },
+                "id": 7,
+                "options": {
+                    "cellHeight": "sm",
+                    "footer": {
+                        "countRows": false,
+                        "enablePagination": true,
+                        "fields": "",
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true,
+                    "sortBy": [
+                        {
+                            "desc": true,
+                            "displayName": "Count"
+                        }
+                    ]
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "bucketAggs": [
+                            {
+                                "fake": true,
+                                "field": "username.keyword",
+                                "id": "3",
+                                "settings": {
+                                    "min_doc_count": 1,
+                                    "order": "desc",
+                                    "orderBy": "_count",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "dsType": "elasticsearch",
+                        "metrics": [
+                            {
+                                "field": "select field",
+                                "id": "1",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "NOT cachecode:(\"TCP_DENIED\" OR \"TCP_SSL_HANDSHAKE\" ) AND NOT username.keyword: \"https\" AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "target": "",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Hits of users",
+                "transformations": [
+                    {
+                        "id": "merge",
+                        "options": {}
+                    }
+                ],
+                "type": "table"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "custom": {
+                            "align": "auto",
+                            "cellOptions": {
+                                "type": "auto"
+                            },
+                            "inspect": false
+                        },
+                        "decimals": 2,
+                        "displayName": "",
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        },
+                        "unit": "short"
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Traffic"
+                                },
+                                {
+                                    "id": "unit",
+                                    "value": "decbytes"
+                                },
+                                {
+                                    "id": "decimals",
+                                    "value": 2
+                                },
+                                {
+                                    "id": "custom.align"
+                                },
+                                {
+                                    "id": "custom.width",
+                                    "value": 120
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "username.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "User"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 11,
+                    "w": 6,
+                    "x": 6,
+                    "y": 51
+                },
+                "id": 14,
+                "options": {
+                    "cellHeight": "sm",
+                    "footer": {
+                        "countRows": false,
+                        "enablePagination": true,
+                        "fields": "",
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true,
+                    "sortBy": [
+                        {
+                            "desc": true,
+                            "displayName": "Traffic"
+                        }
+                    ]
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "bucketAggs": [
+                            {
+                                "field": "username.keyword",
+                                "id": "2",
+                                "settings": {
+                                    "min_doc_count": 1,
+                                    "order": "desc",
+                                    "orderBy": "1",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "dsType": "elasticsearch",
+                        "metrics": [
+                            {
+                                "hide": false,
+                                "id": "1",
+                                "meta": {},
+                                "settings": {},
+                                "type": "count"
+                            }
+                        ],
+                        "query": "NOT cachecode: (\"TCP_DENIED\" OR \"TCP_SSL_HANDSHAKE\" )  AND method: ( \"CONNECT\" OR \"GET\" OR \"POST\") AND NOT username.keyword: \"https\" AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "target": "",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Traffic by User",
+                "transformations": [
+                    {
+                        "id": "merge",
+                        "options": {}
+                    }
+                ],
+                "type": "table"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "custom": {
+                            "align": "auto",
+                            "cellOptions": {
+                                "type": "auto"
+                            },
+                            "inspect": false
+                        },
+                        "decimals": 2,
+                        "displayName": "",
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        },
+                        "unit": "short"
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Count"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Count"
+                                },
+                                {
+                                    "id": "unit",
+                                    "value": "none"
+                                },
+                                {
+                                    "id": "custom.align"
+                                },
+                                {
+                                    "id": "custom.width",
+                                    "value": 90
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "request_host.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Site"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 11,
+                    "w": 6,
+                    "x": 12,
+                    "y": 51
+                },
+                "id": 1,
+                "options": {
+                    "cellHeight": "sm",
+                    "footer": {
+                        "countRows": false,
+                        "enablePagination": true,
+                        "fields": "",
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true,
+                    "sortBy": [
+                        {
+                            "desc": true,
+                            "displayName": "Count"
+                        }
+                    ]
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "bucketAggs": [
+                            {
+                                "fake": true,
+                                "field": "request_host.keyword",
+                                "id": "4",
+                                "settings": {
+                                    "min_doc_count": 1,
+                                    "order": "desc",
+                                    "orderBy": "_count",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "dsType": "elasticsearch",
+                        "metrics": [
+                            {
+                                "field": "select field",
+                                "id": "1",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "NOT cachecode: ( \"TCP_DENIED\" OR \"TCP_SSL_HANDSHAKE\" ) AND NOT username.keyword: \"https\" AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "target": "",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Destinations",
+                "transformations": [
+                    {
+                        "id": "merge",
+                        "options": {}
+                    }
+                ],
+                "type": "table"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "custom": {
+                            "align": "auto",
+                            "cellOptions": {
+                                "type": "auto"
+                            },
+                            "inspect": false
+                        },
+                        "decimals": 2,
+                        "displayName": "",
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        },
+                        "unit": "short"
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Count"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.align"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "username.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "User"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "request_host.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Site"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 11,
+                    "w": 6,
+                    "x": 18,
+                    "y": 51
+                },
+                "id": 19,
+                "options": {
+                    "cellHeight": "sm",
+                    "footer": {
+                        "countRows": false,
+                        "fields": "",
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true,
+                    "sortBy": []
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "bucketAggs": [
+                            {
+                                "fake": true,
+                                "field": "request_host.keyword",
+                                "id": "4",
+                                "settings": {
+                                    "min_doc_count": 1,
+                                    "order": "desc",
+                                    "orderBy": "_count",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            },
+                            {
+                                "field": "username.keyword",
+                                "id": "6",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "missing": "anonyms",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "dsType": "elasticsearch",
+                        "metrics": [
+                            {
+                                "field": "select field",
+                                "id": "1",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "status: 451 AND NOT username.keyword: \"https\" AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "target": "",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Blocked Destinations ",
+                "transformations": [
+                    {
+                        "id": "merge",
+                        "options": {}
+                    }
+                ],
+                "type": "table"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "custom": {
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            }
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "rgba(245, 54, 54, 0.9)"
+                                },
+                                {
+                                    "color": "rgba(237, 129, 40, 0.89)",
+                                    "value": 0
+                                },
+                                {
+                                    "color": "rgba(50, 172, 45, 0.97)",
+                                    "value": 10
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "request_host.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Site"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "peer.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Peer"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 14,
+                    "w": 12,
+                    "x": 0,
+                    "y": 62
+                },
+                "id": 2,
+                "maxDataPoints": 1,
+                "options": {
+                    "basemap": {
+                        "name": "Basemap",
+                        "type": "default"
+                    },
+                    "controls": {
+                        "mouseWheelZoom": false,
+                        "showAttribution": true,
+                        "showDebug": false,
+                        "showMeasure": false,
+                        "showScale": false,
+                        "showZoom": true
+                    },
+                    "layers": [
+                        {
+                            "config": {
+                                "showLegend": true,
+                                "style": {
+                                    "color": {
+                                        "fixed": "dark-green"
+                                    },
+                                    "opacity": 0.4,
+                                    "rotation": {
+                                        "fixed": 0,
+                                        "max": 360,
+                                        "min": -360,
+                                        "mode": "mod"
+                                    },
+                                    "size": {
+                                        "fixed": 5,
+                                        "max": 30,
+                                        "min": 2
+                                    },
+                                    "symbol": {
+                                        "fixed": "img/icons/marker/circle.svg",
+                                        "mode": "fixed"
+                                    },
+                                    "symbolAlign": {
+                                        "horizontal": "center",
+                                        "vertical": "center"
+                                    },
+                                    "textConfig": {
+                                        "fontSize": 12,
+                                        "offsetX": 0,
+                                        "offsetY": 0,
+                                        "textAlign": "center",
+                                        "textBaseline": "middle"
+                                    }
+                                }
+                            },
+                            "location": {
+                                "mode": "auto"
+                            },
+                            "name": "Layer 0",
+                            "tooltip": true,
+                            "type": "markers"
+                        }
+                    ],
+                    "tooltip": {
+                        "mode": "details"
+                    },
+                    "view": {
+                        "allLayers": true,
+                        "id": "coords",
+                        "lat": 0,
+                        "lon": 0,
+                        "zoom": 1
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "bucketAggs": [
+                            {
+                                "fake": true,
+                                "field": "request_host.keyword",
+                                "id": "3",
+                                "settings": {
+                                    "min_doc_count": 1,
+                                    "order": "desc",
+                                    "orderBy": "_count",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            },
+                            {
+                                "field": "peer.keyword",
+                                "id": "2",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "10"
+                                },
+                                "type": "terms"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "dsType": "elasticsearch",
+                        "metrics": [
+                            {
+                                "field": "select field",
+                                "id": "1",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "NOT peer.keyword: \"\\\"-\\\"\" AND (method:CONNECT OR method:GET OR method:POST) AND NOT cachdecode:\"TCP_DENIED\" AND requested_host:$req_host AND NOT username.keyword: \"https\" AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "target": "",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Geo Destination",
+                "type": "geomap"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            }
+                        },
+                        "decimals": 0,
+                        "mappings": [],
+                        "unit": "none"
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "status.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Status"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 7,
+                    "w": 12,
+                    "x": 12,
+                    "y": 62
+                },
+                "id": 35,
+                "maxDataPoints": 3,
+                "options": {
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "table",
+                        "placement": "right",
+                        "showLegend": true,
+                        "values": [
+                            "value"
+                        ]
+                    },
+                    "pieType": "donut",
+                    "reduceOptions": {
+                        "calcs": [
+                            "sum"
+                        ],
+                        "fields": "",
+                        "values": false
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "bucketAggs": [
+                            {
+                                "fake": true,
+                                "field": "status.keyword",
+                                "id": "3",
+                                "settings": {
+                                    "min_doc_count": 1,
+                                    "order": "desc",
+                                    "orderBy": "_count",
+                                    "size": "10"
+                                },
+                                "type": "terms"
+                            },
+                            {
+                                "field": "@timestamp",
+                                "id": "2",
+                                "settings": {
+                                    "interval": "1d",
+                                    "min_doc_count": 0,
+                                    "trimEdges": 0
+                                },
+                                "type": "date_histogram"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "dsType": "elasticsearch",
+                        "metrics": [
+                            {
+                                "field": "select field",
+                                "id": "1",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "target": "",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "HTTP Status Code",
+                "type": "piechart"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            }
+                        },
+                        "decimals": 0,
+                        "mappings": [],
+                        "unit": "none"
+                    },
+                    "overrides": [
+                        {
+                            "__systemRef": "hideSeriesFrom",
+                            "matcher": {
+                                "id": "byNames",
+                                "options": {
+                                    "mode": "exclude",
+                                    "names": [
+                                        "TCP_MISS",
+                                        "TCP_ABORTED",
+                                        "TCP_DNS_FAILED"
+                                    ],
+                                    "prefix": "All except:",
+                                    "readOnly": true
+                                }
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": false,
+                                        "tooltip": false,
+                                        "viz": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "cachecode.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Cache Code"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 7,
+                    "w": 12,
+                    "x": 12,
+                    "y": 69
+                },
+                "id": 11,
+                "maxDataPoints": 3,
+                "options": {
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "table",
+                        "placement": "right",
+                        "showLegend": true,
+                        "values": [
+                            "value"
+                        ]
+                    },
+                    "pieType": "donut",
+                    "reduceOptions": {
+                        "calcs": [
+                            "sum"
+                        ],
+                        "fields": "",
+                        "values": false
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "bucketAggs": [
+                            {
+                                "fake": true,
+                                "field": "cachecode.keyword",
+                                "id": "3",
+                                "settings": {
+                                    "min_doc_count": 1,
+                                    "order": "desc",
+                                    "orderBy": "_count",
+                                    "size": "10"
+                                },
+                                "type": "terms"
+                            },
+                            {
+                                "field": "@timestamp",
+                                "id": "2",
+                                "settings": {
+                                    "interval": "1d",
+                                    "min_doc_count": 0,
+                                    "trimEdges": 0
+                                },
+                                "type": "date_histogram"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "dsType": "elasticsearch",
+                        "metrics": [
+                            {
+                                "field": "select field",
+                                "id": "1",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "target": "",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "TCP Status Code",
+                "type": "piechart"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "thresholds"
+                        },
+                        "custom": {
+                            "align": "auto",
+                            "cellOptions": {
+                                "type": "auto"
+                            },
+                            "inspect": false
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Count"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.width",
+                                    "value": 90
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "request_host.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Site"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "http_referer.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Referer"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 24,
+                    "x": 0,
+                    "y": 76
+                },
+                "id": 37,
+                "options": {
+                    "cellHeight": "sm",
+                    "footer": {
+                        "countRows": false,
+                        "enablePagination": true,
+                        "fields": "",
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true,
+                    "sortBy": [
+                        {
+                            "desc": true,
+                            "displayName": "Count"
+                        }
+                    ]
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "request_host.keyword",
+                                "id": "2",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            },
+                            {
+                                "field": "http_referer.keyword",
+                                "id": "3",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "metrics": [
+                            {
+                                "id": "1",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "NOT http_referer: \"-\" AND NOT username.keyword: \"https\" AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Host and its Referers",
+                "transformations": [
+                    {
+                        "id": "merge",
+                        "options": {}
+                    }
+                ],
+                "type": "table"
+            },
+            {
+                "collapsed": false,
+                "gridPos": {
+                    "h": 1,
+                    "w": 24,
+                    "x": 0,
+                    "y": 84
+                },
+                "id": 27,
+                "panels": [],
+                "title": "User Threat Reports",
+                "type": "row"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            }
+                        },
+                        "decimals": 0,
+                        "mappings": [],
+                        "unit": "none"
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "categories.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Category"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 9,
+                    "w": 12,
+                    "x": 0,
+                    "y": 85
+                },
+                "id": 40,
+                "maxDataPoints": 3,
+                "options": {
+                    "displayLabels": [],
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "table",
+                        "placement": "right",
+                        "showLegend": true,
+                        "values": [
+                            "value"
+                        ]
+                    },
+                    "pieType": "donut",
+                    "reduceOptions": {
+                        "calcs": [
+                            "sum"
+                        ],
+                        "fields": "",
+                        "values": false
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "bucketAggs": [
+                            {
+                                "fake": true,
+                                "field": "categories.keyword",
+                                "id": "3",
+                                "settings": {
+                                    "min_doc_count": 1,
+                                    "order": "desc",
+                                    "orderBy": "_count",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "dsType": "elasticsearch",
+                        "metrics": [
+                            {
+                                "field": "select field",
+                                "id": "1",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "status: ( 451 or 453 ) AND NOT username.keyword: \"https\" AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "target": "",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Top Blocked Categories",
+                "transformations": [
+                    {
+                        "id": "rowsToFields",
+                        "options": {
+                            "mappings": [
+                                {
+                                    "fieldName": "categories",
+                                    "handlerKey": "field.name"
+                                },
+                                {
+                                    "fieldName": "Count",
+                                    "handlerKey": "field.value"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "type": "piechart"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "thresholds"
+                        },
+                        "custom": {
+                            "align": "auto",
+                            "cellOptions": {
+                                "type": "auto"
+                            },
+                            "filterable": true,
+                            "inspect": false
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "categories.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Category"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "filter_name.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Filter"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "filtering_reason.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Reason"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 9,
+                    "w": 12,
+                    "x": 12,
+                    "y": 85
+                },
+                "id": 36,
+                "options": {
+                    "cellHeight": "sm",
+                    "footer": {
+                        "countRows": false,
+                        "enablePagination": true,
+                        "fields": "",
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "categories.keyword",
+                                "id": "2",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            },
+                            {
+                                "field": "filter_name.keyword",
+                                "id": "4",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "10"
+                                },
+                                "type": "terms"
+                            },
+                            {
+                                "field": "filtering_reason.keyword",
+                                "id": "5",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "10"
+                                },
+                                "type": "terms"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "metrics": [
+                            {
+                                "id": "1",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "categories:( \"Anonymizers\" OR \n           \"Botnets\" OR \n           \"Compromised\" OR \n           \"Hacking\" OR \n           \"Illegal Software\" OR \n           \"Malware\" OR \n           \"Peer-to-Peer\" OR \n           \"Phishing & Fraud\" OR \n           \"Spam Sites\" OR \n           \"Alcohol & Tobacco\" OR \n           \"Criminal Activity\" OR \n           \"Cults\" OR \n           \"Gambling\" OR \n           \"Hate & Intolerance\" OR \n           \"Illegal Drug\" OR \n           \"School Cheating\" OR \n           \"Tasteless\" OR \n           \"Unknown\" OR \n           \"Violence\" ) AND NOT username.keyword: \"https\" AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Threat Prevented By",
+                "transformations": [
+                    {
+                        "id": "merge",
+                        "options": {}
+                    }
+                ],
+                "type": "table"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "thresholds"
+                        },
+                        "custom": {
+                            "align": "auto",
+                            "cellOptions": {
+                                "type": "auto"
+                            },
+                            "filterable": true,
+                            "inspect": false
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Count"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.width",
+                                    "value": 87
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "request_host"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.width",
+                                    "value": 139
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "filter_name"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.width",
+                                    "value": 118
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "username.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "User"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "request_host.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Site"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "filter_name.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Filter"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "filtering_reason.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Reason"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 9,
+                    "w": 12,
+                    "x": 0,
+                    "y": 94
+                },
+                "id": 30,
+                "options": {
+                    "cellHeight": "sm",
+                    "footer": {
+                        "countRows": false,
+                        "enablePagination": true,
+                        "fields": "",
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true,
+                    "sortBy": []
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "username.keyword",
+                                "id": "2",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            },
+                            {
+                                "field": "filtering_reason.keyword",
+                                "id": "3",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            },
+                            {
+                                "field": "filter_name.keyword",
+                                "id": "4",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            },
+                            {
+                                "field": "request_host.keyword",
+                                "id": "5",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "10"
+                                },
+                                "type": "terms"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "metrics": [
+                            {
+                                "id": "1",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "status: (451 OR 453) AND method: \"GET\" AND NOT username.keyword: \"https\" AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Malware Downloads",
+                "transformations": [
+                    {
+                        "id": "merge",
+                        "options": {}
+                    }
+                ],
+                "type": "table"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "thresholds"
+                        },
+                        "custom": {
+                            "align": "auto",
+                            "cellOptions": {
+                                "type": "auto"
+                            },
+                            "filterable": true,
+                            "inspect": false
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "request_host.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Site"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "filter_name.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Filter"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "user_groups.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "User Group"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "filtering_reason.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Reason"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 9,
+                    "w": 12,
+                    "x": 12,
+                    "y": 94
+                },
+                "id": 31,
+                "options": {
+                    "cellHeight": "sm",
+                    "footer": {
+                        "countRows": false,
+                        "enablePagination": true,
+                        "fields": "",
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "user_groups.keyword",
+                                "id": "2",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            },
+                            {
+                                "field": "filtering_reason.keyword",
+                                "id": "3",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            },
+                            {
+                                "field": "filter_name.keyword",
+                                "id": "4",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            },
+                            {
+                                "field": "request_host.keyword",
+                                "id": "5",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "10"
+                                },
+                                "type": "terms"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "metrics": [
+                            {
+                                "id": "1",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "status: (451 OR 453) AND method: \"POST\" AND NOT username.keyword: \"https\" AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Malware Uploads",
+                "transformations": [
+                    {
+                        "id": "merge",
+                        "options": {}
+                    }
+                ],
+                "type": "table"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "thresholds"
+                        },
+                        "custom": {
+                            "align": "auto",
+                            "cellOptions": {
+                                "type": "auto"
+                            },
+                            "filterable": true,
+                            "inspect": false
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                },
+                                {
+                                    "color": "red",
+                                    "value": 10
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "request_host.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Site"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "categories.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Category"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 0,
+                    "y": 103
+                },
+                "id": 29,
+                "options": {
+                    "cellHeight": "sm",
+                    "footer": {
+                        "countRows": false,
+                        "enablePagination": true,
+                        "fields": "",
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "categories.keyword",
+                                "id": "2",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            },
+                            {
+                                "field": "request_host.keyword",
+                                "id": "3",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "10"
+                                },
+                                "type": "terms"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "metrics": [
+                            {
+                                "id": "1",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "categories:( \"Anonymizers\" OR \n           \"Botnets\" OR \n           \"Compromised\" OR \n           \"Hacking\" OR \n           \"Illegal Software\" OR \n           \"Malware\" OR \n           \"Peer-to-Peer\" OR \n           \"Phishing & Fraud\" OR \n           \"Spam Sites\" OR \n           \"Alcohol & Tobacco\" OR \n           \"Criminal Activity\" OR \n           \"Cults\" OR \n           \"Gambling\" OR \n           \"Hate & Intolerance\" OR \n           \"Illegal Drug\" OR \n           \"School Cheating\" OR \n           \"Tasteless\" OR \n           \"Unknown\" OR  \n           \"Violence\" ) AND NOT cachecode: \"TCP_SSL_HANDSHAKE\" AND NOT username.keyword: \"https\" AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Threatful Categories and Host",
+                "transformations": [
+                    {
+                        "id": "merge",
+                        "options": {}
+                    }
+                ],
+                "type": "table"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "thresholds"
+                        },
+                        "custom": {
+                            "align": "auto",
+                            "cellOptions": {
+                                "type": "auto"
+                            },
+                            "inspect": false
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "request_host.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Site"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 12,
+                    "y": 103
+                },
+                "id": 34,
+                "options": {
+                    "cellHeight": "sm",
+                    "footer": {
+                        "countRows": false,
+                        "fields": "",
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true,
+                    "sortBy": [
+                        {
+                            "desc": true,
+                            "displayName": "Count"
+                        }
+                    ]
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "request_host.keyword",
+                                "id": "2",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "metrics": [
+                            {
+                                "id": "1",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "cachecode: \"TCP_TUNNEL\" AND NOT username.keyword: \"https\" AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Hosts with SSL Inspection Bypassed",
+                "transformations": [
+                    {
+                        "id": "merge",
+                        "options": {}
+                    }
+                ],
+                "type": "table"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "ffl8ehy67bldsc"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "thresholds"
+                        },
+                        "custom": {
+                            "align": "auto",
+                            "cellOptions": {
+                                "type": "auto"
+                            },
+                            "filterable": true,
+                            "inspect": false
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "username.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "User"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "categories.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Category"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Count"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Request Count"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "client_ip"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Client IP"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "client_ip.keyword"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Client IP"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 0,
+                    "y": 111
+                },
+                "id": 32,
+                "options": {
+                    "cellHeight": "sm",
+                    "footer": {
+                        "countRows": false,
+                        "enablePagination": true,
+                        "fields": "",
+                        "reducer": [
+                            "sum"
+                        ],
+                        "show": false
+                    },
+                    "showHeader": true
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "categories.keyword",
+                                "id": "2",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            },
+                            {
+                                "field": "username.keyword",
+                                "id": "3",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "20"
+                                },
+                                "type": "terms"
+                            },
+                            {
+                                "field": "client_ip.keyword",
+                                "id": "4",
+                                "settings": {
+                                    "min_doc_count": "1",
+                                    "order": "desc",
+                                    "orderBy": "_key",
+                                    "size": "10"
+                                },
+                                "type": "terms"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "ffl8ehy67bldsc"
+                        },
+                        "metrics": [
+                            {
+                                "id": "1",
+                                "type": "count"
+                            }
+                        ],
+                        "query": "categories:( \"Anonymizers\" OR \n           \"Botnets\" OR \n           \"Compromised\" OR \n           \"Hacking\" OR \n           \"Illegal Software\" OR \n           \"Malware\" OR \n           \"Peer-to-Peer\" OR \n           \"Phishing & Fraud\" OR \n           \"Spam Sites\" OR \n           \"Alcohol & Tobacco\" OR \n           \"Criminal Activity\" OR \n           \"Cults\" OR \n           \"Gambling\" OR \n           \"Hate & Intolerance\" OR \n           \"Illegal Drug\" OR \n           \"School Cheating\" OR \n           \"Tasteless\" OR \n           \"Unknown\" OR \n           \"Violence\" ) AND NOT cachecode: \"TCP_SSL_HANDSHAKE\" AND NOT username.keyword: \"https\" AND hostname.keyword:$hostname AND server_ip.keyword:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Threatful User",
+                "transformations": [
+                    {
+                        "id": "merge",
+                        "options": {}
+                    }
+                ],
+                "type": "table"
+            }
+        ],
+        "preload": false,
+        "refresh": "5m",
+        "schemaVersion": 40,
+        "tags": [],
+        "templating": {
+            "list": [
+                {
+                    "current": {},
+                    "datasource": {
+                        "type": "elasticsearch",
+                        "uid": "ffl8ehy67bldsc"
+                    },
+                    "definition": "{\"find\": \"terms\", \"field\":\"username\" }",
+                    "includeAll": true,
+                    "label": "User",
+                    "multi": true,
+                    "name": "user",
+                    "options": [],
+                    "query": "{\"find\": \"terms\", \"field\": \"username.keyword\"}",
+                    "refresh": 2,
+                    "regex": "^(?!.*-).*$",
+                    "type": "query"
+                },
+                {
+                    "current": {},
+                    "datasource": {
+                        "type": "elasticsearch",
+                        "uid": "ffl8ehy67bldsc"
+                    },
+                    "definition": "{\"find\": \"terms\", \"field\":\"request_host\" }",
+                    "includeAll": true,
+                    "label": "Destination",
+                    "multi": true,
+                    "name": "req_host",
+                    "options": [],
+                    "query": "{\"find\": \"terms\", \"field\": \"request_host.keyword\"}",
+                    "refresh": 2,
+                    "regex": "",
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "text": "All",
+                        "value": "$__all"
+                    },
+                    "datasource": {
+                        "type": "elasticsearch",
+                        "uid": "ffl8ehy67bldsc"
+                    },
+                    "definition": "{\"find\": \"terms\", \"field\":\"hostname\" }",
+                    "includeAll": true,
+                    "label": "Hostname",
+                    "multi": true,
+                    "name": "hostname",
+                    "options": [],
+                    "query": "{\"find\": \"terms\", \"field\": \"hostname.keyword\"}",
+                    "refresh": 2,
+                    "regex": "",
+                    "type": "query"
+                },
+                {
+                    "current": {
+                        "text": "All",
+                        "value": "$__all"
+                    },
+                    "datasource": {
+                        "type": "elasticsearch",
+                        "uid": "ffl8ehy67bldsc"
+                    },
+                    "includeAll": true,
+                    "label": "Server IP",
+                    "multi": false,
+                    "name": "server_ip",
+                    "options": [],
+                    "query": "{\"find\": \"terms\", \"field\": \"server_ip.keyword\", \"query\": \"hostname.keyword:$hostname\"}",
+                    "refresh": 2,
+                    "sort": 1,
+                    "type": "query"
+                }
+            ]
+        },
+        "time": {
+            "from": "now-30d",
+            "to": "now"
+        },
+        "timepicker": {},
+        "timezone": "",
+        "title": "HDFC AMC - User Reports",
+        "uid": "hdfc-user-reports-v1",
+        "version": 17,
+        "weekStart": ""
+    }
+}

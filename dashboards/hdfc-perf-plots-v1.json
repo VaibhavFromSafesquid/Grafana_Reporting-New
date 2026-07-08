@@ -1,0 +1,3896 @@
+{
+    "meta": {
+        "type": "db",
+        "canSave": true,
+        "canEdit": true,
+        "canAdmin": true,
+        "canStar": true,
+        "canDelete": true,
+        "slug": "hdfc-amc-performance-plots",
+        "url": "/d/hdfc-perf-plots-v1/hdfc-amc-performance-plots",
+        "expires": "0001-01-01T00:00:00Z",
+        "created": "2026-07-02T07:15:51-04:00",
+        "updated": "2026-07-03T06:40:30-04:00",
+        "updatedBy": "admin",
+        "createdBy": "admin",
+        "version": 5,
+        "hasAcl": false,
+        "isFolder": false,
+        "apiVersion": "v0alpha1",
+        "folderId": 2834895301009408,
+        "folderUid": "bfl8jmgkih728a",
+        "folderTitle": "HDFC",
+        "folderUrl": "/dashboards/f/bfl8jmgkih728a/hdfc",
+        "provisioned": false,
+        "provisionedExternalId": "",
+        "annotationsPermissions": {
+            "dashboard": {
+                "canAdd": true,
+                "canEdit": true,
+                "canDelete": true
+            }
+        }
+    },
+    "dashboard": {
+        "__elements": {},
+        "__inputs": [
+            {
+                "description": "",
+                "label": "safesquid-performance",
+                "name": "DS_SAFESQUID-PERFORMANCE",
+                "pluginId": "elasticsearch",
+                "pluginName": "Elasticsearch",
+                "type": "datasource"
+            }
+        ],
+        "__requires": [
+            {
+                "id": "elasticsearch",
+                "name": "Elasticsearch",
+                "type": "datasource",
+                "version": "1.0.0"
+            },
+            {
+                "id": "grafana",
+                "name": "Grafana",
+                "type": "grafana",
+                "version": "11.5.2"
+            },
+            {
+                "id": "timeseries",
+                "name": "Time series",
+                "type": "panel",
+                "version": ""
+            }
+        ],
+        "annotations": {
+            "list": [
+                {
+                    "builtIn": 1,
+                    "datasource": {
+                        "type": "grafana",
+                        "uid": "-- Grafana --"
+                    },
+                    "enable": true,
+                    "hide": true,
+                    "iconColor": "rgba(0, 211, 255, 1)",
+                    "name": "Annotations & Alerts",
+                    "type": "dashboard"
+                }
+            ]
+        },
+        "description": "Real-Time SafeSquid Performance Stats provides live monitoring of SafeSquid proxy performance, including bandwidth usage, request processing times, cache efficiency, and system health. Ideal for network administrators to optimize performance and troubleshoot issues in real time.",
+        "editable": true,
+        "fiscalYearStartMonth": 0,
+        "gnetId": 23079,
+        "graphTooltip": 0,
+        "id": 984558695165952,
+        "links": [],
+        "liveNow": true,
+        "panels": [
+            {
+                "collapsed": false,
+                "gridPos": {
+                    "h": 1,
+                    "w": 24,
+                    "x": 0,
+                    "y": 0
+                },
+                "id": 20,
+                "panels": [],
+                "title": "CPU/Threads",
+                "type": "row"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "bfqw1msfgia68d"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "axisBorderShow": false,
+                            "axisCenteredZero": false,
+                            "axisColorMode": "text",
+                            "axisLabel": "",
+                            "axisPlacement": "auto",
+                            "barAlignment": 0,
+                            "barWidthFactor": 0.6,
+                            "drawStyle": "line",
+                            "fillOpacity": 20,
+                            "gradientMode": "none",
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            },
+                            "insertNulls": false,
+                            "lineInterpolation": "smooth",
+                            "lineWidth": 1,
+                            "pointSize": 5,
+                            "scaleDistribution": {
+                                "type": "linear"
+                            },
+                            "showPoints": "never",
+                            "spanNulls": false,
+                            "stacking": {
+                                "group": "A",
+                                "mode": "none"
+                            },
+                            "thresholdsStyle": {
+                                "mode": "off"
+                            }
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum load_avg_1min"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "load avg.(1 min)"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum load_avg_5min"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "load avg.(5 min)"
+                                },
+                                {
+                                    "id": "custom.axisPlacement",
+                                    "value": "right"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum load_avg_15min"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "load avg.(15 min)"
+                                },
+                                {
+                                    "id": "custom.axisPlacement",
+                                    "value": "right"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 15,
+                    "x": 0,
+                    "y": 1
+                },
+                "id": 5,
+                "options": {
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "list",
+                        "placement": "bottom",
+                        "showLegend": true
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "@timestamp",
+                                "id": "2",
+                                "settings": {
+                                    "interval": "1m"
+                                },
+                                "type": "date_histogram"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "bfqw1msfgia68d"
+                        },
+                        "metrics": [
+                            {
+                                "field": "load_avg_1min",
+                                "id": "1",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "load_avg_5min",
+                                "id": "3",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "load_avg_15min",
+                                "id": "4",
+                                "type": "sum"
+                            }
+                        ],
+                        "query": "hostname:$hostname AND server_ip:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "System Load",
+                "type": "timeseries"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "bfqw1msfgia68d"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "axisBorderShow": false,
+                            "axisCenteredZero": false,
+                            "axisColorMode": "text",
+                            "axisLabel": "",
+                            "axisPlacement": "auto",
+                            "barAlignment": 0,
+                            "barWidthFactor": 0.6,
+                            "drawStyle": "line",
+                            "fillOpacity": 20,
+                            "gradientMode": "none",
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            },
+                            "insertNulls": false,
+                            "lineInterpolation": "smooth",
+                            "lineWidth": 1,
+                            "pointSize": 5,
+                            "scaleDistribution": {
+                                "type": "linear"
+                            },
+                            "showPoints": "never",
+                            "spanNulls": false,
+                            "stacking": {
+                                "group": "A",
+                                "mode": "none"
+                            },
+                            "thresholdsStyle": {
+                                "mode": "off"
+                            }
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum total_time"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": true,
+                                        "tooltip": true,
+                                        "viz": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum total_time_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": true,
+                                        "tooltip": true,
+                                        "viz": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum system_time"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": true,
+                                        "tooltip": true,
+                                        "viz": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum system_time_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": true,
+                                        "tooltip": true,
+                                        "viz": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum user_time"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": true,
+                                        "tooltip": true,
+                                        "viz": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum user_time_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": true,
+                                        "tooltip": true,
+                                        "viz": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum elapsed_time"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": true,
+                                        "tooltip": true,
+                                        "viz": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "t1"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": true,
+                                        "tooltip": true,
+                                        "viz": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "s1"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": true,
+                                        "tooltip": true,
+                                        "viz": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "u1"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": true,
+                                        "tooltip": true,
+                                        "viz": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "User Time Trend"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.axisPlacement",
+                                    "value": "right"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "System Time Trend"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.axisPlacement",
+                                    "value": "right"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 9,
+                    "x": 15,
+                    "y": 1
+                },
+                "id": 2,
+                "options": {
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "list",
+                        "placement": "bottom",
+                        "showLegend": true
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "@timestamp",
+                                "id": "2",
+                                "settings": {
+                                    "interval": "1m"
+                                },
+                                "type": "date_histogram"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "bfqw1msfgia68d"
+                        },
+                        "metrics": [
+                            {
+                                "field": "total_time",
+                                "id": "1",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "total_time_delta",
+                                "id": "3",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "system_time",
+                                "id": "4",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "system_time_delta",
+                                "id": "5",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "user_time",
+                                "id": "6",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "user_time_delta",
+                                "id": "7",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "elapsed_time",
+                                "id": "8",
+                                "type": "sum"
+                            }
+                        ],
+                        "query": "hostname:$hostname AND server_ip:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "CPU Utilization",
+                "transformations": [
+                    {
+                        "id": "calculateField",
+                        "options": {
+                            "alias": "t1",
+                            "binary": {
+                                "left": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum total_time"
+                                    }
+                                },
+                                "right": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum total_time_delta"
+                                    }
+                                }
+                            },
+                            "mode": "binary",
+                            "reduce": {
+                                "reducer": "sum"
+                            }
+                        }
+                    },
+                    {
+                        "id": "calculateField",
+                        "options": {
+                            "alias": "s1",
+                            "binary": {
+                                "left": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum system_time"
+                                    }
+                                },
+                                "right": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum system_time_delta"
+                                    }
+                                }
+                            },
+                            "mode": "binary",
+                            "reduce": {
+                                "reducer": "sum"
+                            }
+                        }
+                    },
+                    {
+                        "id": "calculateField",
+                        "options": {
+                            "alias": "u1",
+                            "binary": {
+                                "left": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum user_time"
+                                    }
+                                },
+                                "right": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum user_time_delta"
+                                    }
+                                }
+                            },
+                            "mode": "binary",
+                            "reduce": {
+                                "reducer": "sum"
+                            }
+                        }
+                    },
+                    {
+                        "id": "calculateField",
+                        "options": {
+                            "alias": "Total CPU Use Trend",
+                            "binary": {
+                                "left": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "t1"
+                                    }
+                                },
+                                "operator": "/",
+                                "right": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum elapsed_time"
+                                    }
+                                }
+                            },
+                            "mode": "binary",
+                            "reduce": {
+                                "reducer": "sum"
+                            }
+                        }
+                    },
+                    {
+                        "id": "calculateField",
+                        "options": {
+                            "alias": "System Time Trend",
+                            "binary": {
+                                "left": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "s1"
+                                    }
+                                },
+                                "operator": "/",
+                                "right": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum elapsed_time"
+                                    }
+                                }
+                            },
+                            "mode": "binary",
+                            "reduce": {
+                                "reducer": "sum"
+                            }
+                        }
+                    },
+                    {
+                        "id": "calculateField",
+                        "options": {
+                            "alias": "User Time Trend",
+                            "binary": {
+                                "left": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "u1"
+                                    }
+                                },
+                                "operator": "/",
+                                "right": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum elapsed_time"
+                                    }
+                                }
+                            },
+                            "mode": "binary",
+                            "reduce": {
+                                "reducer": "sum"
+                            }
+                        }
+                    }
+                ],
+                "type": "timeseries"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "bfqw1msfgia68d"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "axisBorderShow": false,
+                            "axisCenteredZero": false,
+                            "axisColorMode": "text",
+                            "axisLabel": "",
+                            "axisPlacement": "auto",
+                            "barAlignment": 0,
+                            "barWidthFactor": 0.6,
+                            "drawStyle": "line",
+                            "fillOpacity": 20,
+                            "gradientMode": "none",
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            },
+                            "insertNulls": false,
+                            "lineInterpolation": "smooth",
+                            "lineWidth": 1,
+                            "pointSize": 5,
+                            "scaleDistribution": {
+                                "type": "linear"
+                            },
+                            "showPoints": "never",
+                            "spanNulls": false,
+                            "stacking": {
+                                "group": "A",
+                                "mode": "none"
+                            },
+                            "thresholdsStyle": {
+                                "mode": "off"
+                            }
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "SysYield Delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.axisPlacement",
+                                    "value": "right"
+                                },
+                                {
+                                    "id": "decimals",
+                                    "value": 0
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 10,
+                    "x": 0,
+                    "y": 9
+                },
+                "id": 21,
+                "options": {
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "list",
+                        "placement": "bottom",
+                        "showLegend": true
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "@timestamp",
+                                "id": "2",
+                                "settings": {
+                                    "interval": "1m"
+                                },
+                                "type": "date_histogram"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "bfqw1msfgia68d"
+                        },
+                        "metrics": [
+                            {
+                                "field": "total_time_delta",
+                                "id": "1",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "transactions_handled_delta",
+                                "id": "3",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "client_transactions_handled",
+                                "id": "4",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "total_time",
+                                "id": "5",
+                                "type": "sum"
+                            }
+                        ],
+                        "query": "NOT transactions_handled_delta: 0 AND total_time_delta: [1 TO *] AND hostname:$hostname AND server_ip:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "SysYield",
+                "transformations": [
+                    {
+                        "id": "calculateField",
+                        "options": {
+                            "alias": "SysYield Delta",
+                            "binary": {
+                                "left": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum transactions_handled_delta"
+                                    }
+                                },
+                                "operator": "/",
+                                "right": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum total_time_delta"
+                                    }
+                                }
+                            },
+                            "mode": "binary",
+                            "reduce": {
+                                "reducer": "sum"
+                            }
+                        }
+                    },
+                    {
+                        "id": "calculateField",
+                        "options": {
+                            "alias": "SysYield",
+                            "binary": {
+                                "left": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum client_transactions_handled"
+                                    }
+                                },
+                                "operator": "/",
+                                "right": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum total_time"
+                                    }
+                                }
+                            },
+                            "mode": "binary",
+                            "reduce": {
+                                "reducer": "sum"
+                            }
+                        }
+                    },
+                    {
+                        "id": "organize",
+                        "options": {
+                            "excludeByName": {
+                                "Sum client_transactions_handled": true,
+                                "Sum total_time": true,
+                                "Sum total_time_delta": true,
+                                "Sum transactions_handled_delta": true,
+                                "Time": false
+                            },
+                            "includeByName": {},
+                            "indexByName": {},
+                            "renameByName": {}
+                        }
+                    }
+                ],
+                "type": "timeseries"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "bfqw1msfgia68d"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "axisBorderShow": false,
+                            "axisCenteredZero": false,
+                            "axisColorMode": "text",
+                            "axisLabel": "",
+                            "axisPlacement": "auto",
+                            "barAlignment": 0,
+                            "barWidthFactor": 0.6,
+                            "drawStyle": "line",
+                            "fillOpacity": 20,
+                            "gradientMode": "none",
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            },
+                            "insertNulls": false,
+                            "lineInterpolation": "smooth",
+                            "lineWidth": 1,
+                            "pointSize": 5,
+                            "scaleDistribution": {
+                                "type": "linear"
+                            },
+                            "showPoints": "never",
+                            "spanNulls": false,
+                            "stacking": {
+                                "group": "A",
+                                "mode": "none"
+                            },
+                            "thresholdsStyle": {
+                                "mode": "off"
+                            }
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum total_time_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Total CPU Use Delta (msecs)"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum user_time_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "User Time Delta (msecs)"
+                                },
+                                {
+                                    "id": "custom.axisPlacement",
+                                    "value": "right"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum system_time_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "System Time Delta (msecs)"
+                                },
+                                {
+                                    "id": "custom.axisPlacement",
+                                    "value": "right"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 14,
+                    "x": 10,
+                    "y": 9
+                },
+                "id": 3,
+                "options": {
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "list",
+                        "placement": "bottom",
+                        "showLegend": true
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "@timestamp",
+                                "id": "2",
+                                "settings": {
+                                    "interval": "1m"
+                                },
+                                "type": "date_histogram"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "bfqw1msfgia68d"
+                        },
+                        "metrics": [
+                            {
+                                "field": "total_time_delta",
+                                "id": "1",
+                                "settings": {
+                                    "script": "_value * 1000"
+                                },
+                                "type": "sum"
+                            },
+                            {
+                                "field": "user_time_delta",
+                                "id": "3",
+                                "settings": {
+                                    "script": "_value * 1000"
+                                },
+                                "type": "sum"
+                            },
+                            {
+                                "field": "system_time_delta",
+                                "id": "4",
+                                "settings": {
+                                    "script": "_value * 1000"
+                                },
+                                "type": "sum"
+                            }
+                        ],
+                        "query": "hostname:$hostname AND server_ip:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "CPU Utilization",
+                "type": "timeseries"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "bfqw1msfgia68d"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "axisBorderShow": false,
+                            "axisCenteredZero": false,
+                            "axisColorMode": "text",
+                            "axisLabel": "",
+                            "axisPlacement": "auto",
+                            "barAlignment": 0,
+                            "barWidthFactor": 0.6,
+                            "drawStyle": "line",
+                            "fillOpacity": 20,
+                            "gradientMode": "none",
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            },
+                            "insertNulls": false,
+                            "lineInterpolation": "smooth",
+                            "lineWidth": 1,
+                            "pointSize": 5,
+                            "scaleDistribution": {
+                                "type": "linear"
+                            },
+                            "showPoints": "never",
+                            "spanNulls": false,
+                            "stacking": {
+                                "group": "A",
+                                "mode": "none"
+                            },
+                            "thresholdsStyle": {
+                                "mode": "off"
+                            }
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum spare_client_threads"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Spare Client Threads"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum client_threads_in_use"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Client Threads in Use"
+                                },
+                                {
+                                    "id": "custom.axisPlacement",
+                                    "value": "right"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum client_threads_in_waiting"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Client Threads in Waiting"
+                                },
+                                {
+                                    "id": "custom.axisPlacement",
+                                    "value": "right"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 14,
+                    "x": 0,
+                    "y": 17
+                },
+                "id": 9,
+                "options": {
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "list",
+                        "placement": "bottom",
+                        "showLegend": true
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "@timestamp",
+                                "id": "2",
+                                "settings": {
+                                    "interval": "1m"
+                                },
+                                "type": "date_histogram"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "bfqw1msfgia68d"
+                        },
+                        "metrics": [
+                            {
+                                "field": "spare_client_threads",
+                                "id": "1",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "client_threads_in_use",
+                                "id": "3",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "client_threads_in_waiting",
+                                "id": "4",
+                                "type": "sum"
+                            }
+                        ],
+                        "query": "hostname:$hostname AND server_ip:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Threading Capacity",
+                "type": "timeseries"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "bfqw1msfgia68d"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "axisBorderShow": false,
+                            "axisCenteredZero": false,
+                            "axisColorMode": "text",
+                            "axisLabel": "",
+                            "axisPlacement": "auto",
+                            "barAlignment": 0,
+                            "barWidthFactor": 0.6,
+                            "drawStyle": "line",
+                            "fillOpacity": 20,
+                            "gradientMode": "none",
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            },
+                            "insertNulls": false,
+                            "lineInterpolation": "smooth",
+                            "lineWidth": 1,
+                            "pointSize": 5,
+                            "scaleDistribution": {
+                                "type": "linear"
+                            },
+                            "showPoints": "never",
+                            "spanNulls": false,
+                            "stacking": {
+                                "group": "A",
+                                "mode": "none"
+                            },
+                            "thresholdsStyle": {
+                                "mode": "off"
+                            }
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum running_processes"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Running Processes"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum waiting_processes"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Waiting Processes"
+                                },
+                                {
+                                    "id": "custom.axisPlacement",
+                                    "value": "right"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 10,
+                    "x": 14,
+                    "y": 17
+                },
+                "id": 4,
+                "options": {
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "list",
+                        "placement": "bottom",
+                        "showLegend": true
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "@timestamp",
+                                "id": "2",
+                                "settings": {
+                                    "interval": "1m"
+                                },
+                                "type": "date_histogram"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "bfqw1msfgia68d"
+                        },
+                        "metrics": [
+                            {
+                                "field": "running_processes",
+                                "id": "1",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "waiting_processes",
+                                "id": "3",
+                                "type": "sum"
+                            }
+                        ],
+                        "query": "hostname:$hostname AND server_ip:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "CPU Switching",
+                "type": "timeseries"
+            },
+            {
+                "collapsed": false,
+                "gridPos": {
+                    "h": 1,
+                    "w": 24,
+                    "x": 0,
+                    "y": 25
+                },
+                "id": 18,
+                "panels": [],
+                "title": "Memory",
+                "type": "row"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "bfqw1msfgia68d"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "axisBorderShow": false,
+                            "axisCenteredZero": false,
+                            "axisColorMode": "text",
+                            "axisLabel": "",
+                            "axisPlacement": "auto",
+                            "barAlignment": 0,
+                            "barWidthFactor": 0.6,
+                            "drawStyle": "line",
+                            "fillOpacity": 20,
+                            "gradientMode": "none",
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            },
+                            "insertNulls": false,
+                            "lineInterpolation": "smooth",
+                            "lineWidth": 1,
+                            "pointSize": 5,
+                            "scaleDistribution": {
+                                "type": "linear"
+                            },
+                            "showPoints": "never",
+                            "spanNulls": false,
+                            "stacking": {
+                                "group": "A",
+                                "mode": "none"
+                            },
+                            "thresholdsStyle": {
+                                "mode": "off"
+                            }
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        },
+                        "unit": "deckbytes"
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum total_system_memory_kb"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Total System Memory"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum free_system_memory_kb"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Free System Memory"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 0,
+                    "y": 26
+                },
+                "id": 8,
+                "options": {
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "list",
+                        "placement": "bottom",
+                        "showLegend": true
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "@timestamp",
+                                "id": "2",
+                                "settings": {
+                                    "interval": "1m"
+                                },
+                                "type": "date_histogram"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "bfqw1msfgia68d"
+                        },
+                        "metrics": [
+                            {
+                                "field": "total_system_memory_kb",
+                                "id": "1",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "free_system_memory_kb",
+                                "id": "3",
+                                "type": "sum"
+                            }
+                        ],
+                        "query": "hostname:$hostname AND server_ip:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "System Memory",
+                "type": "timeseries"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "bfqw1msfgia68d"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "axisBorderShow": false,
+                            "axisCenteredZero": false,
+                            "axisColorMode": "text",
+                            "axisLabel": "",
+                            "axisPlacement": "auto",
+                            "barAlignment": 0,
+                            "barWidthFactor": 0.6,
+                            "drawStyle": "line",
+                            "fillOpacity": 20,
+                            "gradientMode": "none",
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            },
+                            "insertNulls": false,
+                            "lineInterpolation": "smooth",
+                            "lineWidth": 1,
+                            "pointSize": 5,
+                            "scaleDistribution": {
+                                "type": "linear"
+                            },
+                            "showPoints": "never",
+                            "spanNulls": false,
+                            "stacking": {
+                                "group": "A",
+                                "mode": "none"
+                            },
+                            "thresholdsStyle": {
+                                "mode": "off"
+                            }
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum caching_objects_created_in_memory"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": true,
+                                        "tooltip": true,
+                                        "viz": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum caching_objects_removed_from_memory"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": true,
+                                        "tooltip": true,
+                                        "viz": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum caching_objects_removed_from_memory_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Caching Objects Removed from Memory"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum caching_objects_created_in_memory_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Caching Objects Added into Memory"
+                                },
+                                {
+                                    "id": "custom.axisPlacement",
+                                    "value": "right"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 12,
+                    "y": 26
+                },
+                "id": 11,
+                "options": {
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "list",
+                        "placement": "bottom",
+                        "showLegend": true
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "@timestamp",
+                                "id": "2",
+                                "settings": {
+                                    "interval": "1m"
+                                },
+                                "type": "date_histogram"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "bfqw1msfgia68d"
+                        },
+                        "metrics": [
+                            {
+                                "field": "caching_objects_created_in_memory",
+                                "id": "1",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "caching_objects_removed_from_memory",
+                                "id": "3",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "caching_objects_removed_from_memory_delta",
+                                "id": "4",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "caching_objects_created_in_memory_delta",
+                                "id": "5",
+                                "type": "sum"
+                            }
+                        ],
+                        "query": "hostname:$hostname AND server_ip:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Caching",
+                "transformations": [
+                    {
+                        "id": "calculateField",
+                        "options": {
+                            "alias": "Caching Objects in Memory",
+                            "binary": {
+                                "left": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum caching_objects_created_in_memory"
+                                    }
+                                },
+                                "operator": "-",
+                                "right": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum caching_objects_removed_from_memory"
+                                    }
+                                }
+                            },
+                            "mode": "binary",
+                            "reduce": {
+                                "reducer": "sum"
+                            }
+                        }
+                    }
+                ],
+                "type": "timeseries"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "bfqw1msfgia68d"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "axisBorderShow": false,
+                            "axisCenteredZero": false,
+                            "axisColorMode": "text",
+                            "axisLabel": "",
+                            "axisPlacement": "auto",
+                            "barAlignment": 0,
+                            "barWidthFactor": 0.6,
+                            "drawStyle": "line",
+                            "fillOpacity": 20,
+                            "gradientMode": "none",
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            },
+                            "insertNulls": false,
+                            "lineInterpolation": "linear",
+                            "lineWidth": 1,
+                            "pointSize": 5,
+                            "scaleDistribution": {
+                                "type": "linear"
+                            },
+                            "showPoints": "never",
+                            "spanNulls": false,
+                            "stacking": {
+                                "group": "A",
+                                "mode": "none"
+                            },
+                            "thresholdsStyle": {
+                                "mode": "off"
+                            }
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        },
+                        "unit": "deckbytes"
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum safesquid_virtual_memory_kb"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "SafeSquid Virtual Memory"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum safesquid_library_memory_kb"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "SafeSquid Library Memory"
+                                },
+                                {
+                                    "id": "custom.axisPlacement",
+                                    "value": "right"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum safesquid_resident_memory_kb"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "SafeSquid Resident Memory"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum safesquid_shared_memory_kb"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "SafeSquid Shared Memory"
+                                },
+                                {
+                                    "id": "custom.axisPlacement",
+                                    "value": "right"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum safesquid_code_memory_kb"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "SafeSquid Code Memory"
+                                },
+                                {
+                                    "id": "custom.axisPlacement",
+                                    "value": "right"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum safesquid_data_memory_kb"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "SafeSquid Data Memory"
+                                },
+                                {
+                                    "id": "custom.axisPlacement",
+                                    "value": "right"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 24,
+                    "x": 0,
+                    "y": 34
+                },
+                "id": 7,
+                "options": {
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "list",
+                        "placement": "bottom",
+                        "showLegend": true
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "@timestamp",
+                                "id": "2",
+                                "settings": {
+                                    "interval": "1m"
+                                },
+                                "type": "date_histogram"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "bfqw1msfgia68d"
+                        },
+                        "metrics": [
+                            {
+                                "field": "safesquid_virtual_memory_kb",
+                                "id": "1",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "safesquid_library_memory_kb",
+                                "id": "3",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "safesquid_resident_memory_kb",
+                                "id": "4",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "safesquid_shared_memory_kb",
+                                "id": "5",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "safesquid_code_memory_kb",
+                                "id": "6",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "safesquid_data_memory_kb",
+                                "id": "7",
+                                "type": "sum"
+                            }
+                        ],
+                        "query": "hostname:$hostname AND server_ip:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "SafeSquid Memory",
+                "type": "timeseries"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "bfqw1msfgia68d"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "axisBorderShow": false,
+                            "axisCenteredZero": false,
+                            "axisColorMode": "text",
+                            "axisLabel": "",
+                            "axisPlacement": "auto",
+                            "barAlignment": 0,
+                            "barWidthFactor": 0.6,
+                            "drawStyle": "line",
+                            "fillOpacity": 20,
+                            "gradientMode": "none",
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            },
+                            "insertNulls": false,
+                            "lineInterpolation": "smooth",
+                            "lineWidth": 1,
+                            "pointSize": 5,
+                            "scaleDistribution": {
+                                "type": "linear"
+                            },
+                            "showPoints": "never",
+                            "spanNulls": false,
+                            "stacking": {
+                                "group": "A",
+                                "mode": "none"
+                            },
+                            "thresholdsStyle": {
+                                "mode": "off"
+                            }
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum safesquid_virtual_memory_kb"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "SafeSquid Virtual Memory"
+                                },
+                                {
+                                    "id": "unit",
+                                    "value": "deckbytes"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum elapsed_time"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Process Age"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 9,
+                    "w": 24,
+                    "x": 0,
+                    "y": 42
+                },
+                "id": 1,
+                "options": {
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "list",
+                        "placement": "bottom",
+                        "showLegend": true
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "@timestamp",
+                                "id": "2",
+                                "settings": {
+                                    "interval": "1m"
+                                },
+                                "type": "date_histogram"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "bfqw1msfgia68d"
+                        },
+                        "metrics": [
+                            {
+                                "field": "safesquid_virtual_memory_kb",
+                                "id": "1",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "elapsed_time",
+                                "id": "3",
+                                "type": "sum"
+                            }
+                        ],
+                        "query": "hostname:$hostname AND server_ip:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Process Life",
+                "type": "timeseries"
+            },
+            {
+                "collapsed": false,
+                "gridPos": {
+                    "h": 1,
+                    "w": 24,
+                    "x": 0,
+                    "y": 51
+                },
+                "id": 19,
+                "panels": [],
+                "title": "Network",
+                "type": "row"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "bfqw1msfgia68d"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "axisBorderShow": false,
+                            "axisCenteredZero": false,
+                            "axisColorMode": "text",
+                            "axisLabel": "",
+                            "axisPlacement": "auto",
+                            "barAlignment": 0,
+                            "barWidthFactor": 0.6,
+                            "drawStyle": "line",
+                            "fillOpacity": 20,
+                            "gradientMode": "none",
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            },
+                            "insertNulls": false,
+                            "lineInterpolation": "smooth",
+                            "lineWidth": 1,
+                            "pointSize": 5,
+                            "scaleDistribution": {
+                                "type": "linear"
+                            },
+                            "showPoints": "never",
+                            "spanNulls": false,
+                            "stacking": {
+                                "group": "A",
+                                "mode": "none"
+                            },
+                            "thresholdsStyle": {
+                                "mode": "off"
+                            }
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum client_connections_handled"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": true,
+                                        "tooltip": true,
+                                        "viz": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum client_connections_closed"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": true,
+                                        "tooltip": true,
+                                        "viz": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum client_threads_in_use"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Concurrent Active Requests"
+                                },
+                                {
+                                    "id": "custom.axisPlacement",
+                                    "value": "right"
+                                }
+                            ]
+                        },
+                        {
+                            "__systemRef": "hideSeriesFrom",
+                            "matcher": {
+                                "id": "byNames",
+                                "options": {
+                                    "mode": "exclude",
+                                    "names": [
+                                        "Concurrent Client Connections",
+                                        "Sum client_connections_handled",
+                                        "Sum client_connections_closed"
+                                    ],
+                                    "prefix": "All except:",
+                                    "readOnly": true
+                                }
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": false,
+                                        "tooltip": false,
+                                        "viz": true
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 16,
+                    "x": 0,
+                    "y": 52
+                },
+                "id": 17,
+                "options": {
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "list",
+                        "placement": "bottom",
+                        "showLegend": true
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "@timestamp",
+                                "id": "2",
+                                "settings": {
+                                    "interval": "1m"
+                                },
+                                "type": "date_histogram"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "bfqw1msfgia68d"
+                        },
+                        "metrics": [
+                            {
+                                "field": "client_connections_handled",
+                                "id": "1",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "client_connections_closed",
+                                "id": "3",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "client_threads_in_use",
+                                "id": "4",
+                                "type": "sum"
+                            }
+                        ],
+                        "query": "hostname:$hostname AND server_ip:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Connections",
+                "transformations": [
+                    {
+                        "id": "calculateField",
+                        "options": {
+                            "alias": "Concurrent Client Connections",
+                            "binary": {
+                                "left": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum client_connections_handled"
+                                    }
+                                },
+                                "operator": "-",
+                                "right": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum client_connections_closed"
+                                    }
+                                }
+                            },
+                            "mode": "binary",
+                            "reduce": {
+                                "reducer": "sum"
+                            }
+                        }
+                    }
+                ],
+                "type": "timeseries"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "bfqw1msfgia68d"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "axisBorderShow": false,
+                            "axisCenteredZero": false,
+                            "axisColorMode": "text",
+                            "axisLabel": "",
+                            "axisPlacement": "auto",
+                            "barAlignment": 0,
+                            "barWidthFactor": 0.6,
+                            "drawStyle": "line",
+                            "fillOpacity": 20,
+                            "gradientMode": "none",
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            },
+                            "insertNulls": false,
+                            "lineInterpolation": "smooth",
+                            "lineWidth": 1,
+                            "pointSize": 5,
+                            "scaleDistribution": {
+                                "type": "linear"
+                            },
+                            "showPoints": "never",
+                            "spanNulls": false,
+                            "stacking": {
+                                "group": "A",
+                                "mode": "none"
+                            },
+                            "thresholdsStyle": {
+                                "mode": "off"
+                            }
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum connections_handled_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "New Incoming Connections"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum client_connections_in_pool"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Client Connections in Pool"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 8,
+                    "x": 16,
+                    "y": 52
+                },
+                "id": 16,
+                "options": {
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "list",
+                        "placement": "bottom",
+                        "showLegend": true
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "@timestamp",
+                                "id": "2",
+                                "settings": {
+                                    "interval": "1m"
+                                },
+                                "type": "date_histogram"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "bfqw1msfgia68d"
+                        },
+                        "metrics": [
+                            {
+                                "field": "connections_handled_delta",
+                                "id": "1",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "client_connections_in_pool",
+                                "id": "3",
+                                "type": "sum"
+                            }
+                        ],
+                        "query": "hostname:$hostname AND server_ip:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Incoming Pressure",
+                "type": "timeseries"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "bfqw1msfgia68d"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "axisBorderShow": false,
+                            "axisCenteredZero": false,
+                            "axisColorMode": "text",
+                            "axisLabel": "",
+                            "axisPlacement": "auto",
+                            "barAlignment": 0,
+                            "barWidthFactor": 0.6,
+                            "drawStyle": "line",
+                            "fillOpacity": 20,
+                            "gradientMode": "none",
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            },
+                            "insertNulls": false,
+                            "lineInterpolation": "smooth",
+                            "lineWidth": 1,
+                            "pointSize": 5,
+                            "scaleDistribution": {
+                                "type": "linear"
+                            },
+                            "showPoints": "never",
+                            "spanNulls": false,
+                            "stacking": {
+                                "group": "A",
+                                "mode": "none"
+                            },
+                            "thresholdsStyle": {
+                                "mode": "off"
+                            }
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum connections_closed_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Connections Closed"
+                                },
+                                {
+                                    "id": "custom.axisPlacement",
+                                    "value": "right"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum connections_handled_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Connections Handled"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 0,
+                    "y": 60
+                },
+                "id": 22,
+                "options": {
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "list",
+                        "placement": "bottom",
+                        "showLegend": true
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "@timestamp",
+                                "id": "2",
+                                "settings": {
+                                    "interval": "1m"
+                                },
+                                "type": "date_histogram"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "bfqw1msfgia68d"
+                        },
+                        "metrics": [
+                            {
+                                "field": "connections_closed_delta",
+                                "id": "1",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "connections_handled_delta",
+                                "id": "3",
+                                "type": "sum"
+                            }
+                        ],
+                        "query": "hostname:$hostname AND server_ip:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Connections Handled",
+                "type": "timeseries"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "bfqw1msfgia68d"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "axisBorderShow": false,
+                            "axisCenteredZero": false,
+                            "axisColorMode": "text",
+                            "axisLabel": "",
+                            "axisPlacement": "auto",
+                            "barAlignment": 0,
+                            "barWidthFactor": 0.6,
+                            "drawStyle": "line",
+                            "fillOpacity": 20,
+                            "gradientMode": "none",
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            },
+                            "insertNulls": false,
+                            "lineInterpolation": "smooth",
+                            "lineWidth": 1,
+                            "pointSize": 5,
+                            "scaleDistribution": {
+                                "type": "linear"
+                            },
+                            "showPoints": "never",
+                            "spanNulls": false,
+                            "stacking": {
+                                "group": "A",
+                                "mode": "none"
+                            },
+                            "thresholdsStyle": {
+                                "mode": "off"
+                            }
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum outbound_connections_created_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": true,
+                                        "tooltip": true,
+                                        "viz": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum outbound_connections_failed_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": true,
+                                        "tooltip": true,
+                                        "viz": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum outbound_connection_pool_reused_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": true,
+                                        "tooltip": true,
+                                        "viz": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum new_dns_queries_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": true,
+                                        "tooltip": true,
+                                        "viz": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "o1"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": true,
+                                        "tooltip": true,
+                                        "viz": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "o2"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": true,
+                                        "tooltip": true,
+                                        "viz": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum transactions_handled_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Client Transactions Handled"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Outbound Connections demanded"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.axisPlacement",
+                                    "value": "right"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 12,
+                    "y": 60
+                },
+                "id": 15,
+                "options": {
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "list",
+                        "placement": "bottom",
+                        "showLegend": true
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "@timestamp",
+                                "id": "2",
+                                "settings": {
+                                    "interval": "1m"
+                                },
+                                "type": "date_histogram"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "bfqw1msfgia68d"
+                        },
+                        "metrics": [
+                            {
+                                "field": "transactions_handled_delta",
+                                "id": "1",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "outbound_connections_created_delta",
+                                "id": "3",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "outbound_connections_failed_delta",
+                                "id": "4",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "outbound_connection_pool_reused_delta",
+                                "id": "5",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "new_dns_queries_delta",
+                                "id": "6",
+                                "type": "sum"
+                            }
+                        ],
+                        "query": "hostname:$hostname AND server_ip:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Request Handling",
+                "transformations": [
+                    {
+                        "id": "calculateField",
+                        "options": {
+                            "alias": "o1",
+                            "binary": {
+                                "left": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum outbound_connections_created_delta"
+                                    }
+                                },
+                                "right": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum outbound_connections_failed_delta"
+                                    }
+                                }
+                            },
+                            "mode": "binary",
+                            "reduce": {
+                                "reducer": "sum"
+                            }
+                        }
+                    },
+                    {
+                        "id": "calculateField",
+                        "options": {
+                            "alias": "o2",
+                            "binary": {
+                                "left": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum outbound_connection_pool_reused_delta"
+                                    }
+                                },
+                                "right": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum new_dns_queries_delta"
+                                    }
+                                }
+                            },
+                            "mode": "binary",
+                            "reduce": {
+                                "reducer": "sum"
+                            }
+                        }
+                    },
+                    {
+                        "id": "calculateField",
+                        "options": {
+                            "alias": "Outbound Connections demanded",
+                            "binary": {
+                                "left": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "o1"
+                                    }
+                                },
+                                "right": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "o2"
+                                    }
+                                }
+                            },
+                            "mode": "binary",
+                            "reduce": {
+                                "reducer": "sum"
+                            }
+                        }
+                    }
+                ],
+                "type": "timeseries"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "bfqw1msfgia68d"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "axisBorderShow": false,
+                            "axisCenteredZero": false,
+                            "axisColorMode": "text",
+                            "axisLabel": "",
+                            "axisPlacement": "auto",
+                            "barAlignment": 0,
+                            "barWidthFactor": 0.6,
+                            "drawStyle": "line",
+                            "fillOpacity": 20,
+                            "gradientMode": "none",
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            },
+                            "insertNulls": false,
+                            "lineInterpolation": "smooth",
+                            "lineWidth": 1,
+                            "pointSize": 5,
+                            "scaleDistribution": {
+                                "type": "linear"
+                            },
+                            "showPoints": "never",
+                            "spanNulls": false,
+                            "stacking": {
+                                "group": "A",
+                                "mode": "none"
+                            },
+                            "thresholdsStyle": {
+                                "mode": "off"
+                            }
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "__systemRef": "hideSeriesFrom",
+                            "matcher": {
+                                "id": "byNames",
+                                "options": {
+                                    "mode": "exclude",
+                                    "names": [
+                                        "Idle TCP Connections"
+                                    ],
+                                    "prefix": "All except:",
+                                    "readOnly": true
+                                }
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": true,
+                                        "tooltip": true,
+                                        "viz": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Total TCP Connections"
+                            },
+                            "properties": [
+                                {
+                                    "id": "custom.hideFrom",
+                                    "value": {
+                                        "legend": false,
+                                        "tooltip": false,
+                                        "viz": false
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 0,
+                    "y": 68
+                },
+                "id": 13,
+                "options": {
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "list",
+                        "placement": "bottom",
+                        "showLegend": true
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "@timestamp",
+                                "id": "2",
+                                "settings": {
+                                    "interval": "1m"
+                                },
+                                "type": "date_histogram"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "bfqw1msfgia68d"
+                        },
+                        "metrics": [
+                            {
+                                "field": "client_transactions_handled",
+                                "id": "1",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "client_connections_closed",
+                                "id": "3",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "outbound_connections_created_delta",
+                                "id": "4",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "outbound_connections_in_pool",
+                                "id": "5",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "client_connections_in_pool",
+                                "id": "6",
+                                "type": "sum"
+                            }
+                        ],
+                        "query": "hostname:$hostname AND server_ip:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Network Pressure",
+                "transformations": [
+                    {
+                        "id": "calculateField",
+                        "options": {
+                            "alias": "t1",
+                            "binary": {
+                                "left": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum client_transactions_handled"
+                                    }
+                                },
+                                "operator": "-",
+                                "right": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum client_connections_closed"
+                                    }
+                                }
+                            },
+                            "mode": "binary",
+                            "reduce": {
+                                "reducer": "sum"
+                            }
+                        }
+                    },
+                    {
+                        "id": "calculateField",
+                        "options": {
+                            "alias": "t2",
+                            "binary": {
+                                "left": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum outbound_connections_created_delta"
+                                    }
+                                },
+                                "right": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum outbound_connections_in_pool"
+                                    }
+                                }
+                            },
+                            "mode": "binary",
+                            "reduce": {
+                                "reducer": "sum"
+                            }
+                        }
+                    },
+                    {
+                        "id": "calculateField",
+                        "options": {
+                            "alias": "Total TCP Connections",
+                            "binary": {
+                                "left": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "t1"
+                                    }
+                                },
+                                "right": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "t2"
+                                    }
+                                }
+                            },
+                            "mode": "binary",
+                            "reduce": {
+                                "reducer": "sum"
+                            }
+                        }
+                    },
+                    {
+                        "id": "calculateField",
+                        "options": {
+                            "alias": "Idle TCP Connections",
+                            "binary": {
+                                "left": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum client_connections_in_pool"
+                                    }
+                                },
+                                "right": {
+                                    "matcher": {
+                                        "id": "byName",
+                                        "options": "Sum outbound_connections_in_pool"
+                                    }
+                                }
+                            },
+                            "mode": "binary",
+                            "reduce": {
+                                "reducer": "sum"
+                            }
+                        }
+                    }
+                ],
+                "type": "timeseries"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "bfqw1msfgia68d"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "axisBorderShow": false,
+                            "axisCenteredZero": false,
+                            "axisColorMode": "text",
+                            "axisLabel": "",
+                            "axisPlacement": "auto",
+                            "barAlignment": 0,
+                            "barWidthFactor": 0.6,
+                            "drawStyle": "line",
+                            "fillOpacity": 20,
+                            "gradientMode": "none",
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            },
+                            "insertNulls": false,
+                            "lineInterpolation": "smooth",
+                            "lineWidth": 1,
+                            "pointSize": 5,
+                            "scaleDistribution": {
+                                "type": "linear"
+                            },
+                            "showPoints": "never",
+                            "spanNulls": false,
+                            "stacking": {
+                                "group": "A",
+                                "mode": "none"
+                            },
+                            "thresholdsStyle": {
+                                "mode": "off"
+                            }
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum outbound_connection_pool_reused_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Outbound Connection Pool Reused"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum outbound_connections_in_pool"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Outbound Connections in Pool"
+                                },
+                                {
+                                    "id": "custom.axisPlacement",
+                                    "value": "right"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 12,
+                    "y": 68
+                },
+                "id": 14,
+                "options": {
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "list",
+                        "placement": "bottom",
+                        "showLegend": true
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "@timestamp",
+                                "id": "2",
+                                "settings": {
+                                    "interval": "1m"
+                                },
+                                "type": "date_histogram"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "bfqw1msfgia68d"
+                        },
+                        "metrics": [
+                            {
+                                "field": "outbound_connection_pool_reused_delta",
+                                "id": "1",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "outbound_connections_in_pool",
+                                "id": "3",
+                                "type": "sum"
+                            }
+                        ],
+                        "query": "hostname:$hostname AND server_ip:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "WAN Pressure",
+                "type": "timeseries"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "bfqw1msfgia68d"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "axisBorderShow": false,
+                            "axisCenteredZero": false,
+                            "axisColorMode": "text",
+                            "axisLabel": "",
+                            "axisPlacement": "auto",
+                            "barAlignment": 0,
+                            "barWidthFactor": 0.6,
+                            "drawStyle": "line",
+                            "fillOpacity": 20,
+                            "gradientMode": "none",
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            },
+                            "insertNulls": false,
+                            "lineInterpolation": "smooth",
+                            "lineWidth": 1,
+                            "pointSize": 5,
+                            "scaleDistribution": {
+                                "type": "linear"
+                            },
+                            "showPoints": "never",
+                            "spanNulls": false,
+                            "stacking": {
+                                "group": "A",
+                                "mode": "none"
+                            },
+                            "thresholdsStyle": {
+                                "mode": "off"
+                            }
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum new_dns_queries_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "New DNS Queries"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum dns_queries_reused_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "DNS Query Reused"
+                                },
+                                {
+                                    "id": "custom.axisPlacement",
+                                    "value": "right"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 14,
+                    "x": 0,
+                    "y": 76
+                },
+                "id": 10,
+                "options": {
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "list",
+                        "placement": "bottom",
+                        "showLegend": true
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "@timestamp",
+                                "id": "2",
+                                "settings": {
+                                    "interval": "1m"
+                                },
+                                "type": "date_histogram"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "bfqw1msfgia68d"
+                        },
+                        "metrics": [
+                            {
+                                "field": "new_dns_queries_delta",
+                                "id": "1",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "dns_queries_reused_delta",
+                                "id": "3",
+                                "type": "sum"
+                            }
+                        ],
+                        "query": "hostname:$hostname AND server_ip:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "DNS",
+                "type": "timeseries"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "bfqw1msfgia68d"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "axisBorderShow": false,
+                            "axisCenteredZero": false,
+                            "axisColorMode": "text",
+                            "axisLabel": "",
+                            "axisPlacement": "auto",
+                            "barAlignment": 0,
+                            "barWidthFactor": 0.6,
+                            "drawStyle": "line",
+                            "fillOpacity": 20,
+                            "gradientMode": "none",
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            },
+                            "insertNulls": false,
+                            "lineInterpolation": "smooth",
+                            "lineWidth": 1,
+                            "pointSize": 5,
+                            "scaleDistribution": {
+                                "type": "linear"
+                            },
+                            "showPoints": "never",
+                            "spanNulls": false,
+                            "stacking": {
+                                "group": "A",
+                                "mode": "none"
+                            },
+                            "thresholdsStyle": {
+                                "mode": "off"
+                            }
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        }
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum dns_query_failures_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "DNS Query failures"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum outbound_connections_failed_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Outbound Connections Failed"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum threading_errors_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Threading Errors"
+                                },
+                                {
+                                    "id": "custom.axisPlacement",
+                                    "value": "right"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 8,
+                    "w": 10,
+                    "x": 14,
+                    "y": 76
+                },
+                "id": 6,
+                "options": {
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "list",
+                        "placement": "bottom",
+                        "showLegend": true
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "@timestamp",
+                                "id": "2",
+                                "settings": {
+                                    "interval": "1m"
+                                },
+                                "type": "date_histogram"
+                            }
+                        ],
+                        "datasource": {
+                            "type": "elasticsearch",
+                            "uid": "bfqw1msfgia68d"
+                        },
+                        "metrics": [
+                            {
+                                "field": "dns_query_failures_delta",
+                                "id": "1",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "outbound_connections_failed_delta",
+                                "id": "3",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "threading_errors_delta",
+                                "id": "4",
+                                "type": "sum"
+                            }
+                        ],
+                        "query": "hostname:$hostname AND server_ip:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Errors",
+                "type": "timeseries"
+            },
+            {
+                "datasource": {
+                    "type": "elasticsearch",
+                    "uid": "bfqw1msfgia68d"
+                },
+                "fieldConfig": {
+                    "defaults": {
+                        "color": {
+                            "mode": "palette-classic"
+                        },
+                        "custom": {
+                            "axisBorderShow": false,
+                            "axisCenteredZero": false,
+                            "axisColorMode": "text",
+                            "axisLabel": "",
+                            "axisPlacement": "auto",
+                            "barAlignment": 0,
+                            "barWidthFactor": 0.6,
+                            "drawStyle": "line",
+                            "fillOpacity": 20,
+                            "gradientMode": "none",
+                            "hideFrom": {
+                                "legend": false,
+                                "tooltip": false,
+                                "viz": false
+                            },
+                            "insertNulls": false,
+                            "lineInterpolation": "smooth",
+                            "lineWidth": 1,
+                            "pointSize": 5,
+                            "scaleDistribution": {
+                                "type": "linear"
+                            },
+                            "showPoints": "never",
+                            "spanNulls": false,
+                            "stacking": {
+                                "group": "A",
+                                "mode": "none"
+                            },
+                            "thresholdsStyle": {
+                                "mode": "off"
+                            }
+                        },
+                        "mappings": [],
+                        "thresholds": {
+                            "mode": "absolute",
+                            "steps": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        },
+                        "unit": "KBs"
+                    },
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum bytes_in_kb_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Bytes In"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum bytes_out_kb_delta"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Bytes Out"
+                                },
+                                {
+                                    "id": "custom.axisPlacement",
+                                    "value": "right"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "gridPos": {
+                    "h": 10,
+                    "w": 24,
+                    "x": 0,
+                    "y": 84
+                },
+                "id": 12,
+                "options": {
+                    "legend": {
+                        "calcs": [],
+                        "displayMode": "list",
+                        "placement": "bottom",
+                        "showLegend": true
+                    },
+                    "tooltip": {
+                        "hideZeros": false,
+                        "mode": "single",
+                        "sort": "none"
+                    }
+                },
+                "pluginVersion": "11.5.2",
+                "targets": [
+                    {
+                        "alias": "",
+                        "bucketAggs": [
+                            {
+                                "field": "@timestamp",
+                                "id": "2",
+                                "settings": {
+                                    "interval": "1m"
+                                },
+                                "type": "date_histogram"
+                            }
+                        ],
+                        "metrics": [
+                            {
+                                "field": "bytes_in_kb_delta",
+                                "id": "1",
+                                "type": "sum"
+                            },
+                            {
+                                "field": "bytes_out_kb_delta",
+                                "id": "3",
+                                "type": "sum"
+                            }
+                        ],
+                        "query": "hostname:$hostname AND server_ip:$server_ip",
+                        "refId": "A",
+                        "timeField": "@timestamp"
+                    }
+                ],
+                "title": "Data Transfer",
+                "type": "timeseries"
+            }
+        ],
+        "refresh": "30s",
+        "schemaVersion": 40,
+        "tags": [],
+        "templating": {
+            "list": [
+                {
+                    "allowCustomValue": false,
+                    "current": {
+                        "text": "All",
+                        "value": "$__all"
+                    },
+                    "datasource": {
+                        "type": "elasticsearch",
+                        "uid": "bfqw1msfgia68d"
+                    },
+                    "definition": "{\"find\": \"terms\", \"field\":\"hostname\" }",
+                    "includeAll": true,
+                    "label": "Hostname",
+                    "name": "hostname",
+                    "options": [],
+                    "query": "{\"find\": \"terms\", \"field\": \"hostname\"}",
+                    "refresh": 2,
+                    "regex": "",
+                    "type": "query"
+                },
+                {
+                    "allowCustomValue": false,
+                    "current": {
+                        "text": "All",
+                        "value": "$__all"
+                    },
+                    "datasource": {
+                        "type": "elasticsearch",
+                        "uid": "bfqw1msfgia68d"
+                    },
+                    "definition": "{\"find\": \"terms\", \"field\":\"server_ip\" }",
+                    "includeAll": true,
+                    "label": "Server IP",
+                    "name": "server_ip",
+                    "options": [],
+                    "query": "{\"find\": \"terms\", \"field\": \"server_ip\", \"query\": \"hostname:$hostname\"}",
+                    "refresh": 2,
+                    "regex": "",
+                    "type": "query"
+                }
+            ]
+        },
+        "time": {
+            "from": "now-1h",
+            "to": "now"
+        },
+        "timepicker": {},
+        "timezone": "browser",
+        "title": "HDFC AMC - Performance Plots",
+        "uid": "hdfc-perf-plots-v1",
+        "version": 5,
+        "weekStart": ""
+    }
+}

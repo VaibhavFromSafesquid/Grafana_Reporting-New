@@ -11,7 +11,7 @@ REPLACE = [
     ('10.200.2.126', '<CLIENT_INTERNAL_IP>'),
 ]
 EXCLUDE_DIRS = {'.git', '__pycache__'}
-EXCLUDE_FILES = {'sanitize.py'}
+EXCLUDE_FILES = {'sanitize.py', 'prepush-verify.sh'}
 def walk_files():
     for r, ds, fs in os.walk('.'):
         ds[:] = [d for d in ds if d not in EXCLUDE_DIRS]
